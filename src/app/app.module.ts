@@ -8,9 +8,11 @@ import { RegisterComponent } from './features/auth/register/pages/register.compo
 import { UserListComponent } from './features/user/pages/user-list/user-list.component';
 import { UserDetailsComponent } from './features/user/pages/user-details/user-details.component';
 import { UserViewComponent } from './features/user/pages/user-view/user-view.component';
-import { TeamListComponent } from './features/team/pages/team-list/team-list.component';
-import { TeamDetailsComponent } from './features/team/pages/team-details/team-details.component';
-import { TeamViewComponent } from './features/team/pages/team-view/team-view.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './features/navbar/navbar.component';
+import { TeamModule } from './features/team/team.module';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,16 @@ import { TeamViewComponent } from './features/team/pages/team-view/team-view.com
     UserListComponent,
     UserDetailsComponent,
     UserViewComponent,
-    TeamListComponent,
-    TeamDetailsComponent,
-    TeamViewComponent,
-  ],
+    NavbarComponent
+    ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TeamModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
