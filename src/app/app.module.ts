@@ -13,6 +13,7 @@ import { NavbarComponent } from './features/navbar/navbar.component';
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CompanyModule } from './features/company/company.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     TeamModule,
+    CompanyModule,
     RouterModule
   ],
   providers: [],
