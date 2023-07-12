@@ -9,10 +9,11 @@ import { UserListComponent } from './features/user/pages/user-list/user-list.com
 import { UserDetailsComponent } from './features/user/pages/user-details/user-details.component';
 import { UserViewComponent } from './features/user/pages/user-view/user-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from './features/layout/navbar/navbar.component';
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LayoutModule } from './features/layout/layout.module';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { CommonModule } from '@angular/common';
     UserListComponent,
     UserDetailsComponent,
     UserViewComponent,
-    NavbarComponent
+
     ],
   imports: [
     CommonModule,
@@ -31,7 +32,8 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     TeamModule,
-    RouterModule
+    RouterModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

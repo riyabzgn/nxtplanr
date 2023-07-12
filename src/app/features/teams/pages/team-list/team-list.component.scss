@@ -1,8 +1,16 @@
+$companyBtn: #bd322f;
+
 .btn.border-warning:hover {
     background-color: #ffc106;
 }
 
 .btn.border-danger:hover{
     background-color: #dd3444;
+    color: #fff;
+}
 
+.footerr{
+    // border-top: 2px solid $companyBtn;
+    background-color: $companyBtn;
+    height:50px;
 }

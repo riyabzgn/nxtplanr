@@ -1,3 +1,5 @@
+$companyBtn: #bd322f;
+
 .blank{
     height:30px;
 }
@@ -19,7 +21,7 @@ form{
 
 .container-form-title{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color:#bd322f;
+    color:$companyBtn;
 
 }
 
@@ -98,9 +100,10 @@ form{
 
 
 .container-form-button{
-    background-color: #bd322f;
+    background-color: $companyBtn;
     width:200px;
     height: 40px; 
     color:white;
     border: none;
 }
+
