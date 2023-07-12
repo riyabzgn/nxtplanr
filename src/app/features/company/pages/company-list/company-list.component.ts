@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-company-list',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./company-list.component.scss']
 })
 export class CompanyListComponent {
+  constructor(private router: Router){}
 
+  addCompany(){
+    this.router.navigate(['/company-details']);
+    console.log("redirect to company form pageeee");
+  }
 }

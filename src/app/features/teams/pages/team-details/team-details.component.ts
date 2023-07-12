@@ -21,6 +21,7 @@ export class TeamDetailsComponent {
   constructor(private fb:FormBuilder, private router: Router, private route: ActivatedRoute){}
 
   addTeam(){
+    this.router.navigate(['/team-list']);
     console.log("heloooihn");
   }
 }
