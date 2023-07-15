@@ -21,7 +21,12 @@ export class TeamDetailsComponent {
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   addTeam() {
-    this.isSubmitted = true;
-    console.log("added");
+    if (this.teamDetails.valid) {
+      this.isSubmitted = true;
+      this.router.navigate(['/company-list']);
+      
+    } else {
+      this.teamDetails.markAllAsTouched();
+    }
   }
-}
+  }

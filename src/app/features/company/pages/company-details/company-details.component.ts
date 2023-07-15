@@ -20,7 +20,13 @@ export class CompanyDetailsComponent {
   constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   addCompany() {
-    this.isSubmitted = true;
-    console.log("added");
+    if (this.companyDetails.valid) {
+      this.isSubmitted = true;
+      this.router.navigate(['/company-list']);
+      console.log("added");
+    } else {
+      this.companyDetails.markAllAsTouched();
+    }
   }
+  
 }
