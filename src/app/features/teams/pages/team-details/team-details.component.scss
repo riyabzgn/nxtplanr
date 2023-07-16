@@ -1,7 +1,11 @@
 $companyBtn: #bd322f;
 
 .blank{
-    height:30px;
+    padding:10px;
+}
+.row{
+    width: 99%;
+    margin-top: 4rem;
 }
 
 .container-form{
@@ -15,6 +19,7 @@ form{
     width:100%;
 }
 
+
 .container-form-title-div{
 
 }
@@ -25,20 +30,26 @@ form{
 
 }
 
+
 .formDiv{
     display: flex;
     flex-direction: column;
-    row-gap: 40px;
+    row-gap: 30px;
     width:400px;
     justify-content: center;
     align-items: center;
 
 }
 
+h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#bd322f;
+}
+
 .container-form-input-div{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    // display:flex;
+    // justify-content: center;
+    // align-items: center;
     flex-direction: column;
     row-gap: 30px;
     width:300px;
@@ -47,13 +58,13 @@ form{
 }
 
 .container-form-input-desc-div{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    // display:flex;
+    // justify-content: center;
+    // align-items: center;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 20px;
     width:300px;
-    height:100px;
+    height:70px;
 
 }
 
@@ -67,14 +78,6 @@ form{
     height:50px;
 }
 
-.container-form-date-div{
-    display:flex;
-    flex-direction:column;
-    width:300px;
-    height:80px;
-    row-gap:10px;
-}
-
 .container-form-input{
     width:100%;
     height:40px;
@@ -85,20 +88,7 @@ form{
     justify-content: center;
     align-items: center;
 }
-
-.container-form-radio-div{
-    display:flex;
-    justify-content: flex-start;
-    width:300px;
-    row-gap:5px;
-    column-gap:5px;
-}    
-
-.container-form-label{
-    // margin-bottom: 20px;
-}
-
-
+ 
 .container-form-button{
     background-color: $companyBtn;
     width:200px;
@@ -107,3 +97,7 @@ form{
     border: none;
 }
 
+.error1{
+    color:red;
+    font-size: 13px;
+}

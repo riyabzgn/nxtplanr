@@ -1,10 +1,42 @@
-<!-- <app-navbar></app-navbar> -->
-<div class="container">
-    <div class="container-form">
-        <span class="blank"></span>
-        <div class="container-form-title-div">
-            <h3 class="container-form-title">ADD TEAM DETAILS</h3>
+<div class="blank">
+
+</div>
+<div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="container mt-5 col-4">
+        <div class="container-form">
+
+            <h2>ADD TEAM DETAILS</h2>
+            <form [formGroup]="teamDetails" class="row g-3" class="formDiv" (ngSubmit)="addTeam()">
+                <div class="container-form-input-div">
+                    <input class="container-form-input" type="text" placeholder="Team Name" formControlName="teamName">
+                    <span class="error1"
+                        *ngIf="teamDetails.get('teamName')?.invalid && (teamDetails.get('teamName')?.touched || teamDetails.get('teamName')?.dirty || isSubmitted)">
+                        <ng-container *ngIf="teamDetails.get('teamName')?.hasError('required')">Team Name
+                            required!</ng-container>
+                    </span>
+                </div>
+
+                <div class="container-form-input-desc-div">
+                    <input class="container-form-input-desc" type="text" placeholder="Description"
+                        formControlName="teamDesc">
+                    <span class="error1"
+                        *ngIf="teamDetails.get('teamDesc')?.invalid && (teamDetails.get('teamDesc')?.touched || teamDetails.get('teamDesc')?.dirty || isSubmitted)">
+                        <ng-container *ngIf="teamDetails.get('teamDesc')?.hasError('required')">Description
+                            required!</ng-container>
+                    </span>
+                </div>
+
+                <div class="container-form-button-div">
+
+                    <input type="submit" value="ADD" class="container-form-button">
+                </div>
+
+            </form>
         </div>
+
         <form [formGroup]="teamDetails" class="formDiv" (ngSubmit)="addTeam()">
             <div class="container-form-input-div">
                 <input class="container-form-input" type="text" placeholder="Team Name" formControlName='teamName'>
@@ -30,3 +62,8 @@
             </div>
         </form>
 </div>
+
+    </div>
+    <div class="col-3">
+    </div>
+

@@ -12,7 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
 import { LayoutModule } from './features/layout/layout.module';
+
+import { CompanyModule } from './features/company/company.module';
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { LayoutModule } from './features/layout/layout.module';
     ReactiveFormsModule,
     TeamModule,
     RouterModule,
-    LayoutModule
+    LayoutModule,
+    CompanyModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
