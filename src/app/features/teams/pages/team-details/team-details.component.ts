@@ -23,7 +23,7 @@ export class TeamDetailsComponent {
   addTeam() {
     if (this.teamDetails.valid) {
       this.isSubmitted = true;
-      this.router.navigate(['/company-list']);
+      this.router.navigate(['/team-list']);
       
     } else {
       this.teamDetails.markAllAsTouched();
