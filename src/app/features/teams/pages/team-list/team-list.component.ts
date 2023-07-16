@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-list',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class TeamListComponent {
 
+  constructor(private router: Router){}
+  gotoTeamForm(){
+    this.router.navigate(['/team-details']);
+  }
 }

@@ -1,1 +1,27 @@
-<p>company-list works!</p>
+<div class="container p-4">
+    <div class=" d-flex justify-content-end mt-2 p-4">
+            <button type="button" (click)="addCompany()" class="btn  btn-danger">+ADD COMPANY</button>
+    </div>
+    <div class="row d-flex justify-content-around">
+        <div class="col-5">
+            <div class="card m-4">
+                <img src="assets/foneNxtImg.jpeg" class="card-img-top h-50" alt="angular Icon">
+                <h5 class="card-title d-flex justify-content-center p-4"></h5>
+                <div class="buttons d-flex justify-content-around mb-4 col-md-6 col-lg-12">
+                    <button type="button" class="btn border-warning btn-block">Update Company Details</button>
+                    <button type="button" class="btn  border-danger btn-block">Delete Company Details</button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-6">
+            <div class="card m-4">
+                <img src="assets/fonepay.png" class="card-img-top h-50 p-5" alt="angular Icon">
+                <h5 class="card-title d-flex justify-content-center p-4">Fone Pay</h5>
+                <div class="buttons d-flex justify-content-around mb-4">
+                    <button type="button" class="btn  border-warning">Update Team</button>
+                    <button type="button" class="btn  border-danger">Delete Team</button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

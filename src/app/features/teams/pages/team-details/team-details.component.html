@@ -36,6 +36,34 @@
 
             </form>
         </div>
+
+        <form [formGroup]="teamDetails" class="formDiv" (ngSubmit)="addTeam()">
+            <div class="container-form-input-div">
+                <input class="container-form-input" type="text" placeholder="Team Name" formControlName='teamName'>
+            </div>
+            <div class="container-form-input-desc-div">
+                <input class="container-form-input-desc" type="text" placeholder="Description" formControlName='teamDesc'>
+            </div>
+            <div class="container-form-radio-div">
+                <label class="container-form-label">IsActive: </label>
+                <input type="radio" name="isActive" formControlName='teamActive'> True
+                <input type="radio" name="isActive" formControlName='teamActive'> False
+            </div>
+            <div class="container-form-date-div">
+                <label class="container-form-label">Date Created</label>
+                <input type="date" class="container-form-input" formControlName='teamCreatedDate'>
+            </div>
+            <div class="container-form-date-div">
+                <label class="container-form-label">Date Updated</label>
+                <input type="date" class="container-form-input" formControlName='teamUpdatedDate'>
+            </div>
+            <div class="container-form-button-div">
+                <button class="container-form-button">SUBMIT</button>
+            </div>
+        </form>
+</div>
+
     </div>
     <div class="col-3">
     </div>
+

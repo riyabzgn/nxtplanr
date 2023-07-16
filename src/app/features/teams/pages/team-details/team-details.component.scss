@@ -1,3 +1,5 @@
+$companyBtn: #bd322f;
+
 .blank{
     padding:10px;
 }
@@ -16,6 +18,18 @@
 form{
     width:100%;
 }
+
+
+.container-form-title-div{
+
+}
+
+.container-form-title{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:$companyBtn;
+
+}
+
 
 .formDiv{
     display: flex;
@@ -76,7 +90,7 @@ h2{
 }
  
 .container-form-button{
-    background-color: #bd322f;
+    background-color: $companyBtn;
     width:200px;
     height: 40px; 
     color:white;
