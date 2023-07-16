@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class CompanyListComponent {
   constructor(private router: Router){}
 
+
   addCompany(){
     this.router.navigate(['/company-details']);
     console.log("redirect to company form pageeee");

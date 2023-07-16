@@ -19,7 +19,6 @@ NavbarComponent
   ],
   exports: [
 NavbarComponent
-
   ]
 })
 export class LayoutModule { }
