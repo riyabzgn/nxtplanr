@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {  Router } from '@angular/router';
+
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-team-list',
   templateUrl: './team-list.component.html',
@@ -8,7 +10,12 @@ import {  Router } from '@angular/router';
 export class TeamListComponent {
   constructor( private router: Router) { }
 
+
+  constructor(private router: Router){}
+
+
   addTeamDetails(){
+
     this.router.navigate(['/team-details']);
   }
 }
