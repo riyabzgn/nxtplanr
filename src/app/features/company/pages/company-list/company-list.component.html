@@ -1,9 +1,9 @@
 <div class="container p-4">
     <div class=" d-flex justify-content-end mt-2 p-4">
-            <button type="button" (click)="addCompanyDetails()" class="btn  btn-danger">+ADD COMPANY</button>
+        <button type="button" (click)="addCompanyDetails()" class="btn  btn-danger">+ADD COMPANY</button>
     </div>
-    <div class="row d-flex justify-content-around">
-        <div class="col-5">
+    <!-- <div class="row d-flex justify-content-around"> -->
+        <!-- <div class="col-5">
             <div class="card m-4">
                 <img src="assets/foneNxtImg.jpeg" class="card-img-top h-50" alt="angular Icon">
                 <h5 class="card-title d-flex justify-content-center p-4"></h5>
@@ -12,16 +12,23 @@
                     <button type="button" class="btn  border-danger btn-block">Delete Company Details</button>
                 </div>
             </div>
-        </div>
-        <!-- <div class="col-6">
-            <div class="card m-4">
-                <img src="assets/fonepay.png" class="card-img-top h-50 p-5" alt="angular Icon">
-                <h5 class="card-title d-flex justify-content-center p-4">Fone Pay</h5>
-                <div class="buttons d-flex justify-content-around mb-4">
-                    <button type="button" class="btn  border-warning">Update Team</button>
-                    <button type="button" class="btn  border-danger">Delete Team</button>
+        </div> -->
+        <div class="row d-flex" >
+        <div class="col-4" *ngFor="let formVal of companyFormValue; let i=index">
+            <div class="card m-4 d-flex  justify-content-center align-items-center flex-wrap-nowrap p-5 g-5">
+                <!-- <img src="assets/fonepay.png" class="card-img-top h-50 p-5" alt="angular Icon"> -->
+                    <p class="d-flex justify-content-around">S.No: {{formVal.id}}</p>
+                    <h5 class="card-title p-1">{{formVal.companyName}}</h5>
+                    <p class=" p-1">{{formVal.companyDesc}}</p>
+                    <p class="p-1">Address: {{formVal.address}}</p>
+                    <p class=" p-1">Contact: {{formVal.contact}}</p>
+
+                    <div class="buttons d-flex justify-content-around mb-4">
+                        <button type="button" class="btn  border-warning" (click)="updateCompany(formVal.id)">Update Team</button>
+                        <button type="button" class="btn  border-danger" (click)="deleteCompany(i)">Delete Team</button>
+                    </div>
                 </div>
             </div>
-        </div> -->
-    </div>
+        </div>
+    <!-- </div> -->
 </div>

@@ -1,0 +1,98 @@
+.blank{
+    padding:10px;
+}
+.row{
+    width: 99%;
+    margin-top: -4%;
+}
+
+.container-form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form{
+    width:100%;
+}
+
+.formDiv{
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    width:400px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#bd322f;
+    font-size: 25px;
+}
+
+.container-form-input-div{
+    // display:flex;
+    // justify-content: center;
+    // align-items: center;
+    flex-direction: column;
+    row-gap: 30px;
+    width:300px;
+    height:40px;
+
+}
+
+.container-form-input-desc-div{
+    // display:flex;
+    // justify-content: center;
+    // align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+    width:300px;
+    height:70px;
+
+}
+
+.container-form-input-desc{
+    width:100%;
+    height:100%;
+}
+
+
+.desc{
+    height:50px;
+}
+
+.container-form-input{
+    width:100%;
+    height:40px;
+}
+
+.container-form-button-div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.container-form-button{
+    background-color: #bd322f;
+    width:200px;
+    height: 40px; 
+    color:white;
+    border: none;
+}
+
+.error1{
+    color:red;
+    font-size: 13px;
+}
+
+#color.ng-invalid.ng-touched {
+    border: red solid 2px;
+}
+
+#color.ng-valid.ng-touched {
+    border:#28a745 solid 2px;
+}
