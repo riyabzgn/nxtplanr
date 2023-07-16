@@ -8,20 +8,25 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./team-details.component.scss']
 })
 export class TeamDetailsComponent {
-  
-  teamDetails= this.fb.group ({
-    teamName: ['', [Validators.required]],
-    teamDesc: ['', [Validators.required]],
-    teamActive: ['', [Validators.required]],
-    teamCreatedDate: ['', [Validators.required]],
-    teamUpdatedDate: ['', [Validators.required]]
+
+  teamDetails = this.fb.group({
+    teamName: ['', Validators.required],
+
+    teamDesc: ['', Validators.required]
 
   })
 
-  constructor(private fb:FormBuilder, private router: Router, private route: ActivatedRoute){}
+  isSubmitted = false;
 
-  addTeam(){
-    this.router.navigate(['/team-list']);
-    console.log("heloooihn");
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+
+  addTeam() {
+    if (this.teamDetails.valid) {
+      this.isSubmitted = true;
+      this.router.navigate(['/company-list']);
+      
+    } else {
+      this.teamDetails.markAllAsTouched();
+    }
   }
-}
+  }
