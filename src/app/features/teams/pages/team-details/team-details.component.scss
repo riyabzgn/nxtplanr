@@ -1,3 +1,5 @@
+$companyBtn: #bd322f;
+
 .blank{
     padding:10px;
 }
@@ -15,6 +17,14 @@
 
 form{
     width:100%;
+}
+
+
+
+.container-form-title{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color:$companyBtn;
+
 }
 
 .formDiv{
@@ -76,7 +86,7 @@ h2{
 }
  
 .container-form-button{
-    background-color: #bd322f;
+    background-color: $companyBtn;
     width:200px;
     height: 40px; 
     color:white;
@@ -86,4 +96,12 @@ h2{
 .error1{
     color:red;
     font-size: 13px;
+}
+
+#color.ng-invalid.ng-touched {
+    border: red solid 2px;
+}
+
+#color.ng-valid.ng-touched {
+    border:#28a745 solid 2px;
 }

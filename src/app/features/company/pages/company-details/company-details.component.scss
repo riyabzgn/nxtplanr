@@ -3,7 +3,7 @@
 }
 .row{
     width: 99%;
-    margin-top: 1rem;
+    margin-top: -4%;
 }
 
 .container-form{
@@ -30,6 +30,7 @@ form{
 h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:#bd322f;
+    font-size: 25px;
 }
 
 .container-form-input-div{
@@ -86,4 +87,12 @@ h2{
 .error1{
     color:red;
     font-size: 13px;
+}
+
+#color.ng-invalid.ng-touched {
+    border: red solid 2px;
+}
+
+#color.ng-valid.ng-touched {
+    border:#28a745 solid 2px;
 }
