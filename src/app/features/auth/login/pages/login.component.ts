@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
 
     if (sessionStorage['authKey']) {
-      this.router.navigate(['/company/list']);
+      this.router.navigate(['/activity']);
     }
 
     this.loginForm = this.fb.group({
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           console.log('res', res);
           if (res) {
             this.loginService.setAuthKeyInStorage(res?.body?.token);
-            this.router.navigate(['/company']);
+            this.router.navigate(['/activity']);
           } else {
             console.log('Unauthorized user');
           }

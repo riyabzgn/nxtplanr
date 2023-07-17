@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import { CompanyModule } from './features/company/company.module';
 import { LayoutModule } from './features/layout/layout.module';
 import { UserModule } from './features/user/user.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +24,8 @@ import { UserModule } from './features/user/user.module';
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-
+    ReactiveFormsModule,
+    FormsModule,
     TeamModule,
     CompanyModule,
     RouterModule,

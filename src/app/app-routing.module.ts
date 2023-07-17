@@ -30,6 +30,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./features/user/user.module').then((m) => m.UserModule),
       },
+      {
+        path: 'activity',
+        loadChildren: () =>
+          import('./features/activity-record/activity-record.module').then((m) => m.ActivityRecordModule),
+      },
     ],
 
   },
