@@ -11,7 +11,7 @@
             <h2>ADD TEAM DETAILS</h2>
             <form [formGroup]="teamDetails" class="row g-3" class="formDiv" (ngSubmit)="addTeam()">
                 <div class="container-form-input-div">
-                    <input class="container-form-input" type="text" placeholder="Team Name" formControlName="teamName">
+                    <input class="container-form-input" id="color" type="text" placeholder="Team Name" formControlName="teamName">
                     <span class="error1"
                         *ngIf="teamDetails.get('teamName')?.invalid && (teamDetails.get('teamName')?.touched || teamDetails.get('teamName')?.dirty || isSubmitted)">
                         <ng-container *ngIf="teamDetails.get('teamName')?.hasError('required')">Team Name
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="container-form-input-desc-div">
-                    <input class="container-form-input-desc" type="text" placeholder="Description"
+                    <input class="container-form-input-desc" id="color" type="text" placeholder="Description"
                         formControlName="teamDesc">
                     <span class="error1"
                         *ngIf="teamDetails.get('teamDesc')?.invalid && (teamDetails.get('teamDesc')?.touched || teamDetails.get('teamDesc')?.dirty || isSubmitted)">

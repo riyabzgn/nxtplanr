@@ -26,4 +26,4 @@ export class TeamDetailsComponent {
     console.log("heloooihn");
     this.isSubmitted = true;
     console.log("added");
-  }
+  }}

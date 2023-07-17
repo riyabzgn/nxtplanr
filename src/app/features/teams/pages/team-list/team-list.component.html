@@ -1,7 +1,10 @@
-
+<<<<<<<<< Temporary merge branch 1
+=========
 <div class="container p-4">
     <div class=" d-flex justify-content-end p-4">
-        <button type="button" class="btn  btn-danger" (click)="gotoTeamForm()">+ADD TEAM</button>
+
+        <button type="button" class="btn  btn-danger" (click)="addTeamDetails()">+ADD TEAM</button>
+
     </div>
     <div class="row">
         <div class="col-4">
@@ -60,14 +63,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-4" *ngFor="let formVal of teamFormValue; let i=index">
             <div class="card m-4">
                 <div class="card">
                     <img src="assets/codingImg.jpeg" class="card-img-top h-50" alt="angular Icon">
-                    <h5 class="card-title d-flex justify-content-center  p-4">Angular Developer</h5>
+                    <h5 class="card-title d-flex justify-content-center  p-4">{{formVal.teamName}}</h5>
+                    <p class=" p-1">{{formVal.teamDesc}}</p>
                     <div class="buttons d-flex justify-content-around mb-4">
-                        <button type="button" class="btn  border-warning">Update Team</button>
-                        <button type="button" class="btn  border-danger">Delete Team</button>
+                        <button type="button" class="btn  border-warning" (click)="updateTeam(formVal.id)">Update Team</button>
+                        <button type="button" class="btn  border-danger" (click)="deleteTeam(i)">Delete Team</button>
                     </div>
                 </div>
             </div>
@@ -75,4 +79,4 @@
     </div>
 </div>
 <div class="row footerr"></div>
-
+>>>>>>>>> Temporary merge branch 2
