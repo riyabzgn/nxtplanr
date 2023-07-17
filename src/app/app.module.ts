@@ -12,9 +12,12 @@ import { CommonModule } from '@angular/common';
 import { CompanyModule } from './features/company/company.module';
 import { LayoutModule } from './features/layout/layout.module';
 import { UserModule } from './features/user/user.module';
+<<<<<<< Updated upstream
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
+=======
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,8 +27,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+<<<<<<< Updated upstream
     ReactiveFormsModule,
     FormsModule,
+=======
+
+>>>>>>> Stashed changes
     TeamModule,
     CompanyModule,
     RouterModule,

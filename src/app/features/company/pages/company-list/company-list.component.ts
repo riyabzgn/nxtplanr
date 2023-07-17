@@ -11,9 +11,14 @@ export class CompanyListComponent {
 
   companyFormValue: any[]=[];
 
+<<<<<<< Updated upstream
   constructor(private router: Router, private companyservice: CompanyService){
     this.companyFormValue= this.companyservice.getFormValue();
   }
+=======
+
+
+>>>>>>> Stashed changes
 
   addCompanyDetails(){
     this.router.navigate(['/company-details']);

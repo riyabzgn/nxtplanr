@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { CompanyViewComponent } from './pages/company-view/company-view.component';
 import { CompanyListComponent } from './pages/company-list/company-list.component';
 import { CompanyDetailsComponent } from './pages/company-details/company-details.component';
+<<<<<<< Updated upstream
 import { CompanyUpdateComponent } from './pages/company-update/company-update.component';
+=======
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   {
@@ -18,10 +21,13 @@ const routes: Routes = [
     path: 'detail',
     component: CompanyDetailsComponent
   },
+<<<<<<< Updated upstream
   {
     path: 'update',
     component: CompanyUpdateComponent
   },
+=======
+>>>>>>> Stashed changes
 ];
 
 @NgModule({
