@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../../company.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-company-update',
@@ -23,7 +24,7 @@ export class CompanyUpdateComponent implements OnInit{
     url: ['', Validators.required],
   })
   
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private companyservice: CompanyService) { 
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private companyservice: CompanyService, private location: Location) { 
     this.id= this.route.snapshot.paramMap.get('id');
     console.log('check index---> ', this.id);
   }
@@ -60,5 +61,9 @@ export class CompanyUpdateComponent implements OnInit{
       this.companyservice.updateCompany(this.company);
     }
     this.router.navigate(['company-list']);
+  }
+
+  goBackToPrevPage(): void{
+    this.location.back();
   }
 }

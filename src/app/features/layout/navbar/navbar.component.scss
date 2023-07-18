@@ -1,64 +1,54 @@
-ul {
-    display:flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-    overflow: hidden;
+.sidenav{
+  background: #000;
+  transition: all .5s ease;
+  position: fixed;
+  z-index:1;
+  top:0;
+  width: 16.5625rem;
+  height: 100vh;
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+
+  .logo-container{
+    display: flex;
     align-items: center;
-    /* background-color: #0a1b28; */
-    border-bottom: 1px solid #d11d27;
+    padding: 0.98rem 0.938rem 0 0.938rem;
     width:100%;
-  }
 
-.logo{
-    margin-right:20px;
-    margin-left:20px;
-}
+    .logo{
+      background-color: #fff;
+      text-align: center;
+      width: 3rem;
+      min-width: 3rem;
+      border-radius: 0.313rem;
+      padding: 0.313rem;
+      font-size: 24px;
+      font-weight: 900;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .logo-text{
+      margin-left: 1.5rem;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+    }
 
-  li p{
-    display: block;
-    color: #d11d27;
-    text-align: center;
-    padding: 14px 30px;
+    .btn-close{
+      margin-left: auto;
+      cursor: pointer;
+      width: 2rem;
+      height:2rem;
+      border-radius: 50%;
+      background-color: transparent;
+      border: none;
+
+      .fa-times{
+        color:#8690a3;
+        font-size: 24px;
+      }
+
+
+    }
   }
-  
-  li {
-    display:flex;
-    flex-direction: row;
-    float: left;
-    font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-.tskIcon{
-  display: inline-block;
-  color: #63c4da;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  margin-right: 0;
-  transform: translate(40%, 3%);
 }
-//   li p{
-//     display: block;
-//     color: #d11d27;
-//     text-align: center;
-//     padding: 14px 7px;
-//     text-decoration: none;
-//     margin-right: 30px;
-//     font-size: 20px;
-//     font-weight: 40%;
-//   }
-  
-  li a {
-    display: block;
-    color: #d11d27;
-    text-align: center;
-    padding: 14px 30px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    /* background-color: #ffffff; */
-    /* font-size: 21px; */
-    text-shadow: 0 0 1px #d11d27;
-  }

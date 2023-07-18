@@ -9,6 +9,7 @@ import { CompanyService } from '../../company.service';
 })
 export class CompanyListComponent {
 
+
   companyFormValue: any[]=[];
 
   constructor(private router: Router, private companyservice: CompanyService){

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TeamService } from '../../team.service';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-team-update',
@@ -13,6 +14,7 @@ export class TeamUpdateComponent {
   id!: any;
   isSubmitted= false;
   team: any;
+  // location: any;
 
   
   teamDetails = this.fb.group({
@@ -21,7 +23,7 @@ export class TeamUpdateComponent {
     teamDesc: ['', Validators.required],
   })
   
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private teamservice: TeamService) { 
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private teamservice: TeamService, private location: Location) { 
     this.id= this.route.snapshot.paramMap.get('id');
     console.log('check index---> ', this.id);
   }
@@ -52,5 +54,9 @@ export class TeamUpdateComponent {
       this.teamservice.updateTeam(this.team);
     }
     this.router.navigate(['team-list']);
+  }
+
+  goBackToTeamList(){
+    this.location.back();
   }
 }

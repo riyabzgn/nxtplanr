@@ -1,3 +1,4 @@
+@import url('https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
 /* You can add global styles to this file, and also import other style files */
 $primary-button: #d11d27;
 $secondary-button: #aa0010;
@@ -5,4 +6,17 @@ $home-background: #fffaef;
 $color:           #faecd8;
 $arko-red:        #bd322f;
 
+<<<<<<< Updated upstream
 @import './app/features/auth/login/pages/login.component.scss';
+=======
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+>>>>>>> Stashed changes

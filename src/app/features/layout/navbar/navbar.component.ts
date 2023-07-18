@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { navbarData } from './nav-data';
 
 @Component({
   selector: 'app-navbar',
@@ -9,5 +10,7 @@ import { Component } from '@angular/core';
   // imports: [CommonModule]
 })
 export class NavbarComponent {
+  collapsed= false;
+  navData= navbarData;
 
 }
