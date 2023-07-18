@@ -1,11 +1,9 @@
-$companyBtn: #bd322f;
-
 .blank{
     padding:10px;
 }
 .row{
     width: 99%;
-    margin-top: 4rem;
+    margin-top: -4%;
 }
 
 .container-form{
@@ -19,19 +17,10 @@ form{
     width:100%;
 }
 
-
-
-.container-form-title{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color:$companyBtn;
-
-}
-
-
 .formDiv{
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 25px;
     width:400px;
     justify-content: center;
     align-items: center;
@@ -41,6 +30,7 @@ form{
 h2{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color:#bd322f;
+    font-size: 25px;
 }
 
 .container-form-input-div{
@@ -87,7 +77,7 @@ h2{
 }
  
 .container-form-button{
-    background-color: $companyBtn;
+    background-color: #bd322f;
     width:200px;
     height: 40px; 
     color:white;

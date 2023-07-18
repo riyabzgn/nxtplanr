@@ -4,3 +4,5 @@ $secondary-button: #aa0010;
 $home-background: #fffaef;
 $color:           #faecd8;
 $arko-red:        #bd322f;
+
+@import './app/features/auth/login/pages/login.component.scss';
