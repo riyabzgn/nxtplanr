@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor.interceptor';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
@@ -20,7 +19,6 @@ import { UserModule } from './features/user/user.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule,
     TeamModule,
     CompanyModule,
     RouterModule,
