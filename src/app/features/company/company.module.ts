@@ -12,8 +12,8 @@ import { CompanyUpdateComponent } from './pages/company-update/company-update.co
   declarations: [
     CompanyListComponent,
     CompanyViewComponent,
-    CompanyDetailsComponent
-
+    CompanyDetailsComponent,
+CompanyUpdateComponent
   ],
 
   imports: [
