@@ -1,44 +1,91 @@
-
 <div class="wrapper">
-  <header>LOGIN</header>
+  <header>
+
   
-  <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
-  
-    <div class="field password">
-
-      <div class="input-area">
-        <input type="email" id="email" placeholder="Your email..." formControlName="email">
-       
-        <span class="error"
-          *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty  || isSubmitted)">
-          <ng-container *ngIf="loginForm.get('email')?.hasError('required')">Email is required!</ng-container>
-          <ng-container *ngIf="loginForm.get('email')?.hasError('pattern')">Invalid email format!</ng-container>
-        </span>
-      </div>
-    </div>
-
-
-    <div class="field password">
-      <div class="input-area">
-        <input [type]="passwordVisible ? 'text' : 'password'" id="password" placeholder="Password" formControlName="password">
-        <span class="error"
-          *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty  || isSubmitted)">
-    
-          <ng-container *ngIf="loginForm.get('password')?.hasError('required')">Password is
-            required!</ng-container>
-          <ng-container *ngIf="loginForm.get('password')?.hasError('pattern')">Password must have one capital
-            letter, one symbol and one number.</ng-container>
-        </span>
-      </div>
-    </div>
-    <div class="show-password">
-
-      <input type="checkbox" id="togglePassword" (change)="togglePasswordVisibility()">
-      <label for="togglePassword">Show password</label>
-    </div>
-    
-    
+    <fa-icon [icon]="isLogged ? faLockOpen : faLock"></fa-icon>
+    <br /><br />
+    <img class="logo" src="../../../../../assets/logo.png" />
     <br>
-    <button type="submit" value="Submit" id="btn">Login</button>
+
+  </header>
+ 
+
+  <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+    <div class="field email">
+      <div class="input-area">
+        <div class="email-icon">
+          <span class="icon">
+            <fa-icon [icon]="faEnvelope"></fa-icon>
+            <!-- Add the Font Awesome email icon here -->
+          </span>
+        </div>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Your email..."
+          formControlName="email"
+        />
+        <span
+          class="error"
+          *ngIf="
+            loginForm.get('email')?.invalid &&
+            (loginForm.get('email')?.touched ||
+              loginForm.get('email')?.dirty ||
+              isSubmitted)
+          "
+        >
+          <ng-container *ngIf="loginForm.get('email')?.hasError('required')"
+            >Email is required!</ng-container
+          >
+          <ng-container *ngIf="loginForm.get('email')?.hasError('pattern')"
+            >Invalid email format!</ng-container
+          >
+        </span>
+      </div>
+    </div>
+
+    <div class="field password">
+      <div class="input-area">
+        <div class="password-icon">
+          <span class="icon">
+            <fa-icon [icon]="faKey"></fa-icon>
+          </span>
+        </div>
+        <input
+          [type]="passwordVisible ? 'text' : 'password'"
+          id="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <fa-icon
+          class="icon"
+          [icon]="passwordVisible ? faEye : faEyeSlash"
+          (click)="togglePasswordVisibility()"
+        ></fa-icon>
+        <span
+          class="error"
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            (loginForm.get('password')?.touched ||
+              loginForm.get('password')?.dirty ||
+              isSubmitted)
+          "
+        >
+          <ng-container *ngIf="loginForm.get('password')?.hasError('required')"
+            >Password is required!</ng-container
+          >
+          <ng-container *ngIf="loginForm.get('password')?.hasError('pattern')"
+            >Password must have one capital letter, one symbol, and one
+            number.</ng-container
+          >
+        </span>
+      </div>
+    </div>
+
+    <br />
+    <button type="submit" value="Submit" id="btn">
+      <fa-icon [icon]="faRightToBracket"></fa-icon>Login
+    </button>
   </form>
 </div>

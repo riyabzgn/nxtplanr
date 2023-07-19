@@ -1,1 +1,52 @@
-<p>activity-team works!</p>
+<div class="activity-team">
+    <div class="activity-team_container">
+        <div class="activity-team_header">
+            
+          
+            
+            <div class="quick-filter">
+                <div class="quick-filter-option">
+                    <label for="filterDropdown">Quick Filter:</label>
+                    <select id="filterDropdown">
+                        <option value="option1">Angular</option>
+                        <option value="option2">Java</option>
+                        <option value="option3">QA</option>
+                        <option value="option3">Design</option>
+                        <option value="option3">Mobile Dev</option>
+                    </select>
+                </div>
+               
+            </div>
+            <div class="header_btn">
+                <div class="btn_export">
+                    <button>Export</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="date-info">
+            <div class="date-content">Date: 16th July - 20th July</div>
+        </div>
+
+        <div class="main-table">
+            <div class="table-container">
+                <div class="user-table">
+                    <table id="usersTable">
+                        <tr>
+                            <th>Name</th>
+                            <th>Working Hours</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr *ngFor="let user of formValue; let i = index">
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.workinghours }}</td>
+                            <td>
+                             <button class="eye-btn" (click)="goToList()" ><i class="fa-solid fa-eye"></i></button>
+                            </td>
+                          </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
