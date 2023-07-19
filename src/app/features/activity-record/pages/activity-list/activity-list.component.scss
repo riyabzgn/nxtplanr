@@ -1,8 +1,168 @@
-.activity-list{
-    margin:0;
-    padding: 0;
+.activity-list {
+  margin: 2rem;
 }
-.activity-list_container{
-    margin: 0;
-    padding: 0;
+.activity-list_top {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  padding: 15px;
+  width: 10rem;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 8px;
 }
+
+.header_avatar {
+  text-align: right;
+}
+.header_avatar fa-icon{
+  margin-right: 10px;
+}
+.header_avatar h5 {
+  margin: 0;
+}
+.header_btn {
+  transform: translate(0, 5rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn_export button {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 2.5rem;
+}
+.btn_back button {
+  background-color: grey;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 2.5rem;
+}
+.btn_back {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.date h2{
+  font-size: 23px;
+  position: relative;
+  transform: translate(-25.1rem,3rem);
+}
+
+
+.btn_back fa-icon {
+  margin-right: 10px; 
+}
+.btn_export fa-icon {
+  margin-right: 10px; 
+}
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translate(0, 10rem);
+  }
+  
+.main-header_team h1{
+    color: #aa0010;
+    font-weight: bold;
+}
+.main-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translate(0, 13rem);
+  }
+  .table-container{
+    width: 75%;
+    overflow-x: auto;
+    max-height: 600px;
+    position: relative;
+  }
+  #usersTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    transform: translate(10rem);
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0px 70px 0px 0px rgba(201, 212, 233, 0.1);
+    table-layout: fixed;
+  }
+  
+  #usersTable td,
+  #usersTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: #f2f2f2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  #usersTable tr:hover {
+    background-color: #ddd;
+  }
+  
+  #usersTable th {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: left;
+    background-color: #aa0010;
+    color: white;
+    font-size: 18px;
+    z-index: 2;
+    position: sticky;
+    top: 0;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .main-table{
+        width: 100%;
+    }
+    .date h2{
+      font-size: 20px;
+      position: relative;
+      transform: translate(-3rem,3rem);
+    }
+    .main {
+      flex-direction: column;
+    }
+    #usersTable {
+       width: 100%;
+        transform: translate(0); /* Remove horizontal translation */
+      }
+    
+      #usersTable td,
+      #usersTable th {
+        font-size: 12px;
+        padding: 10px;
+      }
+    
+      .user-table {
+        overflow-x: auto;
+        width: 100%;
+      }
+      
+  }
+  @media (max-width: 900px) {
+    .date h2{
+      font-size: 20px;
+      position: relative;
+      transform: translate(-2rem,3rem);
+    }
+  }
+ @media (max-width: 1000px) {
+    .date h2{
+      font-size: 20px;
+      position: relative;
+      transform: translate(-2rem,3rem);
+    }
+ }

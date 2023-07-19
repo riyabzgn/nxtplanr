@@ -5,17 +5,19 @@ import { ActivityRecordRoutingModule } from './activity-record-routing.module';
 import { ActivityTeamComponent } from './pages/activity-team/activity-team.component';
 import { ActivityUserComponent } from './pages/activity-user/activity-user.component';
 import { ActivityListComponent } from './pages/activity-list/activity-list.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     ActivityTeamComponent,
     ActivityUserComponent,
-    ActivityListComponent
+    ActivityListComponent,
+
   ],
   imports: [
     CommonModule,
-    ActivityRecordRoutingModule
+    ActivityRecordRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class ActivityRecordModule { }

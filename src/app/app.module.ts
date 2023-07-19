@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor.interceptor';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastrModule,ToastrService } from 'ngx-toastr';
 
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
@@ -34,10 +35,19 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LayoutModule,
     UserModule,
     FontAwesomeModule,
+    ToastrModule.forRoot({
+      
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      toastClass: 'custom-toast',
+      titleClass: 'custom-title',
+      messageClass: 'custom-message'
+    })
   ],
   exports: [],
   bootstrap: [AppComponent],
   providers: [
+    ToastrService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 })

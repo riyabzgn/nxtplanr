@@ -6,3 +6,72 @@ $color:           #faecd8;
 $arko-red:        #bd322f;
 
 @import './app/features/auth/login/pages/login.component.scss';
+// .toast-error {
+//     background-color: red;
+//     width: 480px;
+//     color: white;
+//     position: fixed;
+//     top: 10px;
+//     right: 10px;
+//     animation-name: slidein;
+//     animation-duration: 1s;
+//     padding: 18px;
+//     margin-bottom: 50px; 
+//     font-size: 20px;
+//     font-weight: bold;
+//   }
+  
+//   @keyframes slidein {
+//     from {
+//       transform: translateX(100%);
+//     }
+//     to {
+//       transform: translateX(0);
+//     }
+//   }
+  
+//   .custom-title.login-failed {
+//     color: green; /* Change the color to your preference */
+//   }
+/* styles.css or styles.scss */
+.toast-error {
+    width: 480px;
+    background-color: red;
+    color: white;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    animation-name: slidein;
+    animation-duration: 1s;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Add a gap between multiple error toasts */
+  }
+  
+    @keyframes slidein {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+
+  
+/* styles.css or styles.scss */
+.toast-success {
+    width: 480px;
+    background-color: green;
+    color: white;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    animation-name: slidein;
+    animation-duration: 1s;
+    padding: 18px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
