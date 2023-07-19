@@ -1,0 +1,21 @@
+.body{
+    width: calc(100% - 16.625rem);
+    margin-left: auto;
+}
+
+.navbar-expanded{
+    width:calc(100% - 5rem);
+    height: 100vh;
+    margin-left: 5rem;
+    z-index: 0;
+    position: relative;
+    top: 0;
+    transition: all .5s ease;
+    background: #f4f7fa;
+    padding: 3rem;
+}
+
+.navbar-expanded.md{
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+}

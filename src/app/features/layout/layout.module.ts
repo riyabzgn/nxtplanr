@@ -9,7 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [
     LayoutContainerComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ReactiveFormsModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
   ]
 })
 export class LayoutModule { }

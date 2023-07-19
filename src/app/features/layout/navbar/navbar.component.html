@@ -1,28 +1,27 @@
-<div class="navbar">
-    <ul>
-        <li><img class="logo" src="assets/nxtplanrIcon.png" width="130" height="70" alt="Nxt Planr"></li>
-        <!-- <li><a routerLink='./company-details'>Dashboard</a></li> -->
-        <li><a routerLink='./company-list'>Company</a></li>
-        <li><a routerLink='./team-list'>Team</a></li>
-        <li><a routerLink='./user-details'>User</a></li>
-    </ul>
-</div>
-
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': '' ">
     <div class="logo-container">
-        <button class="logo"></button>
-        <div class="logo-text"></div>
-        <button class="btn-close" *ngIf="collapsed">
-            <i class="fal fa-times close-icon"></i>
+        <button class="logo" (click)="toggleCollapse()"><img src="assets/np.png" width="40" height="40"></button>
+        <div class="logo-text" *ngIf="collapsed"><img src="assets/nxtplanrIcon.png"></div>
+        <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+            <i class="fa fa-xmark close-icon"></i>
         </button>
-
-    </div>
+    </div> 
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a href="" class="sidenav-nav-link" [routerLink]="[data.routerLink]">
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
+            <a class="sidenav-nav-link" [routerLink]="[data.routerLink]">
+                <i class="sidenav-link-icon {{data.icon}}"></i>
                     <span class="sidenav-link-text" *ngIf="collapsed">{{data.label}}</span>
             </a>
         </li>
     </ul>
+    <ul class="sidenav-nav-logout d-flex flex-direction-column justify-content-end">
+        <li class="sidenav-nav-item justify-content-end">
+            <a class="sidenav-nav-link" routerLink='./user-details' *ngIf="collapsed">
+                <i class="fa fa-right-from-bracket sidenav-link-icon"></i>
+                <span class="sidenav-link-text" *ngIf="collapsed">Logout</span>
+            </a>
+        </li>
+
+    </ul>
+
 </div>

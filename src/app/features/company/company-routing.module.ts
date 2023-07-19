@@ -6,6 +6,7 @@ import { CompanyDetailsComponent } from './pages/company-details/company-details
 import { CompanyUpdateComponent } from './pages/company-update/company-update.component';
 
 const routes: Routes = [
+  {path: '',  redirectTo:'list', pathMatch:'full'},
   {
     path: 'view/:id',
     component: CompanyViewComponent
