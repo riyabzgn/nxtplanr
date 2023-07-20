@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor.interceptor';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule,ToastrService } from 'ngx-toastr';
+import { LayoutModule } from './features/layout/layout.module';
 
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CompanyModule } from './features/company/company.module';
-import { LayoutModule } from './features/layout/layout.module';
 import { UserModule } from './features/user/user.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

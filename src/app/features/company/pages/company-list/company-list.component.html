@@ -16,12 +16,12 @@
         <div class="row d-flex" >
         <div class="col-4" *ngFor="let formVal of companyFormValue; let i=index">
             <div class="card m-4 d-flex  justify-content-center align-items-center flex-wrap-nowrap p-5 g-5">
-                <!-- <img src="assets/fonepay.png" class="card-img-top h-50 p-5" alt="angular Icon"> -->
-                    <p class="d-flex justify-content-around">S.No: {{formVal.id}}</p>
-                    <h5 class="card-title p-1">{{formVal.companyName}}</h5>
-                    <p class=" p-1">{{formVal.companyDesc}}</p>
-                    <p class="p-1">Address: {{formVal.address}}</p>
-                    <p class=" p-1">Contact: {{formVal.contact}}</p>
+                <img src="assets/foneNxtImg.jpeg" class="card-img-top h-50 p-5" alt="angular Icon">
+                    <!-- <p class="d-flex justify-content-around">S.No: {{formVal.id}}</p> -->
+                    <!-- <h5 class="card-title p-1">{{formVal.companyName}}</h5> -->
+                    <p class="">{{formVal.companyDesc}}</p>
+                    <p class="">Address: {{formVal.address}}</p>
+                    <p class="">Contact: {{formVal.contact}}</p>
                     <div class="buttons d-flex justify-content-around mb-4">
                         <button type="button" class="btn  border-warning" (click)="updateCompany(formVal.id)">Update Team</button>
                         <button type="button" class="btn  border-danger" (click)="deleteCompany(i)">Delete Team</button>

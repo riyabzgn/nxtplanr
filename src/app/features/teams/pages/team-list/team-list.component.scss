@@ -10,7 +10,18 @@ $companyBtn: #bd322f;
 }
 
 .footerr{
+
     // border-top: 2px solid $companyBtn;
-    background-color: $companyBtn;
+    background-color: #fffaef;
     height:50px;
+
+    p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $companyBtn;
+
+
+    }
 }
+

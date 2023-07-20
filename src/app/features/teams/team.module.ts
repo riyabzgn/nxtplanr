@@ -6,6 +6,7 @@ import { TeamViewComponent } from './pages/team-view/team-view.component';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamUpdateComponent } from './pages/team-update/team-update.component';
+import { TeamsRoutingModule } from './teams-routing.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TeamUpdateComponent } from './pages/team-update/team-update.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    TeamsRoutingModule
   ],
 
 })

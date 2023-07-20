@@ -17,7 +17,11 @@ export class TeamListComponent {
   }
 
   addTeamDetails(){
-    this.router.navigate(['/team-details']);
+    this.router.navigate(['/details']);
+  }
+
+  gotoActivity(){
+    this.router.navigate(['']);
   }
   
 
@@ -26,7 +30,7 @@ export class TeamListComponent {
   }
 
   updateTeam(id: number){
-    this.router.navigate([`/team-update/${id}`]);
+    this.router.navigate([`/update/${id}`]);
     console.log('updateTeam() working');
   }
 }

@@ -53,7 +53,7 @@ export class TeamUpdateComponent {
 
       this.teamservice.updateTeam(this.team);
     }
-    this.router.navigate(['team-list']);
+    this.router.navigate(['/team/list']);
   }
 
   goBackToTeamList(){
