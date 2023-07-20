@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { navbarData } from './nav-data';
@@ -9,6 +10,7 @@ interface SidenavToggle{
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+
   // standalone: true,
   // imports: [CommonModule]
 })
