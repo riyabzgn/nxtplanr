@@ -17,8 +17,8 @@
     padding: 0.98rem 0.938rem 0 0.938rem;
     width: 100%;
 
-    .logo {
-      background-color: #fffaef;
+    .logo-navbar {
+      // background-color: #fffaefx;
       text-align: center;
       color: #d11d27;
       width: 3rem;
@@ -29,10 +29,11 @@
       font-weight: 900;
       cursor: pointer;
       border: none;
+      background-color: transparent;
 
     }
 
-    .logo img{
+    .logo-navbar img{
       border: none;
       border-radius: 50%;
 
