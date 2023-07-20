@@ -1,6 +1,6 @@
 @import url('https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
 @import './app/features/auth/login/pages/login.component.scss';
-@fa-font-path:   "../font";
+
 
 /* You can add global styles to this file, and also import other style files */
 $primary-button: #d11d27;
@@ -21,35 +21,9 @@ body{
 }
 
 @import './app/features/auth/login/pages/login.component.scss';
-// .toast-error {
-//     background-color: red;
-//     width: 480px;
-//     color: white;
-//     position: fixed;
-//     top: 10px;
-//     right: 10px;
-//     animation-name: slidein;
-//     animation-duration: 1s;
-//     padding: 18px;
-//     margin-bottom: 50px; 
-//     font-size: 20px;
-//     font-weight: bold;
-//   }
-  
-//   @keyframes slidein {
-//     from {
-//       transform: translateX(100%);
-//     }
-//     to {
-//       transform: translateX(0);
-//     }
-//   }
-  
-//   .custom-title.login-failed {
-//     color: green; /* Change the color to your preference */
-//   }
-/* styles.css or styles.scss */
+
 .toast-error {
+  background-image: none !important;
     width: 480px;
     background-color: red;
     color: white;
@@ -58,10 +32,12 @@ body{
     right: 10px;
     animation-name: slidein;
     animation-duration: 1s;
-    padding: 18px;
+    padding: 8px;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10px; /* Add a gap between multiple error toasts */
+    margin-bottom: 10px; 
+  
+    
   }
   
     @keyframes slidein {
@@ -75,9 +51,10 @@ body{
   
 
   
-/* styles.css or styles.scss */
+
 .toast-success {
     width: 480px;
+    background-image: none !important;
     background-color: green;
     color: white;
     position: fixed;
@@ -88,5 +65,14 @@ body{
     padding: 18px;
     font-size: 20px;
     font-weight: bold;
+  }
+  
+  .toast-success .toast-progress {
+    background-color: yellow;
+    height: 8px; 
+  }
+  .toast-success .toast-progress {
+    background-color: blue; 
+    height: 8px; 
   }
   

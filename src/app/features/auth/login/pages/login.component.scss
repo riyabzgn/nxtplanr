@@ -2,17 +2,6 @@
 .login{
   display: flex;
 }
-
-  .logo {
-    width: 150px;
-    height: auto;
-    border: none;
-    border-radius: 5px;
-   transform: translate(0, -4rem);
-   
-    
-  }
-
 .wrapper {
   width: 380px;
   padding: 40px 30px 50px 30px;
@@ -29,6 +18,17 @@
   color: black;
   height: 90px;
 }
+  .logo-login {
+    width: 150px;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+   transform: translate(0, -4rem);
+   
+    
+  }
+
+
 
 .wrapper form {
   width: 100%;
@@ -93,7 +93,7 @@ form input {
   transform: translateY(-50%);
 }
 
-/* Adjust the position and styling of the icon as needed */
+
 
 form .field input:focus,
 form .field.valid input {

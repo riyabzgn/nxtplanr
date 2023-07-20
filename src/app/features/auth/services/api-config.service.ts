@@ -11,5 +11,7 @@ export class ApiConfigService {
   getLoginUrl(): string {
     return `${this.apiBaseUrl}/login`;
   }
-
+  getTableDataUrl(): string {
+    return `${this.apiBaseUrl}/users/table-data`; 
+  }
 }
