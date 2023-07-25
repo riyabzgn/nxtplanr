@@ -16,7 +16,7 @@
     </ul>
     <ul class="sidenav-nav-logout d-flex flex-direction-column justify-content-end">
         <li class="sidenav-nav-item justify-content-end">
-            <a class="sidenav-nav-link" routerLink='./user-details' *ngIf="collapsed">
+            <a class="sidenav-nav-link" (click)="logout()" routerLink='./user-details' *ngIf="collapsed">
                 <i class="fa fa-right-from-bracket sidenav-link-icon"></i>
                 <span class="sidenav-link-text" *ngIf="collapsed">Logout</span>
             </a>

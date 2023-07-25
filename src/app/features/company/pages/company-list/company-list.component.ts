@@ -5,30 +5,24 @@ import { CompanyService } from '../../company.service';
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html',
-  styleUrls: ['./company-list.component.scss']
+  styleUrls: ['./company-list.component.scss'],
 })
 export class CompanyListComponent {
+  companyFormValue: any[] = [];
 
-
-  companyFormValue: any[]=[];
-
-  constructor(private router: Router, private companyservice: CompanyService){
-    this.companyFormValue= this.companyservice.getFormValue();
+  constructor(private router: Router, private companyservice: CompanyService) {
+    this.companyFormValue = this.companyservice.getFormValue();
   }
 
-  addCompanyDetails(){
-    this.router.navigate(['/company-details']);
-    console.log("redirect to company form pageeee");
+  addCompanyDetails() {
+    this.router.navigate(['/company/detail']);
   }
-  
 
-  deleteCompany(index: number){
+  deleteCompany(index: number) {
     this.companyFormValue.splice(index, 1);
   }
 
-  updateCompany(id: number){
-    this.router.navigate([`/company-update/${id}`]);
-    console.log('updateCompany() working');
+  updateCompany(id: number) {
+    this.router.navigate([`/company/update/${id}`]);
   }
-
 }

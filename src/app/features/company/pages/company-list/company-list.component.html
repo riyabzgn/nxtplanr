@@ -2,23 +2,12 @@
     <div class=" d-flex justify-content-end mt-2 p-4">
         <button type="button" (click)="addCompanyDetails()" class="btn  btn-danger">+ADD COMPANY</button>
     </div>
-    <!-- <div class="row d-flex justify-content-around"> -->
-        <!-- <div class="col-5">
-            <div class="card m-4">
-                <img src="assets/foneNxtImg.jpeg" class="card-img-top h-50" alt="angular Icon">
-                <h5 class="card-title d-flex justify-content-center p-4"></h5>
-                <div class="buttons d-flex justify-content-around mb-4 col-md-6 col-lg-12">
-                    <button type="button" class="btn border-warning btn-block">Update Company Details</button>
-                    <button type="button" class="btn  border-danger btn-block">Delete Company Details</button>
-                </div>
-            </div>
-        </div> -->
+   
         <div class="row d-flex" >
         <div class="col-4" *ngFor="let formVal of companyFormValue; let i=index">
             <div class="card m-4 d-flex  justify-content-center align-items-center flex-wrap-nowrap p-5 g-5">
                 <img src="assets/foneNxtImg.jpeg" class="card-img-top h-50 p-5" alt="angular Icon">
-                    <!-- <p class="d-flex justify-content-around">S.No: {{formVal.id}}</p> -->
-                    <!-- <h5 class="card-title p-1">{{formVal.companyName}}</h5> -->
+                  
                     <p class="">{{formVal.companyDesc}}</p>
                     <p class="">Address: {{formVal.address}}</p>
                     <p class="">Contact: {{formVal.contact}}</p>

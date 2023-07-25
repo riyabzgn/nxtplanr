@@ -38,7 +38,7 @@ export class CompanyDetailsComponent {
     if (this.companyDetails.valid) {
       this.isSubmitted = true;
       this.companyservice.setFormValue(company);
-      this.router.navigate(['/company-list']);
+      this.router.navigate(['/company/list']);
       console.log("added");
     } 
 

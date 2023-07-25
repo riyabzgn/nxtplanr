@@ -12,10 +12,9 @@ import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CompanyModule } from './features/company/company.module';
-import { UserModule } from './features/user/user.module';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 
 
 @NgModule({
@@ -35,7 +34,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CompanyModule,
     RouterModule,
     LayoutModule,
-    UserModule,
+   
     FontAwesomeModule,
     ToastrModule.forRoot({
       

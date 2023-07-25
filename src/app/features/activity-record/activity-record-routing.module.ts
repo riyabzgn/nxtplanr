@@ -10,7 +10,7 @@ const routes: Routes = [
     component:  ActivityTeamComponent
   },
   {
-    path: 'list',
+    path: 'list/:id',
     component: ActivityListComponent
   },
   {

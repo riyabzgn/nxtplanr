@@ -17,6 +17,7 @@
                     <input class="container-form-input" id="color" type="text" placeholder="Company Name"
                         formControlName="companyName">
                     <span class="error1"
+                 
                         *ngIf="companyDetails.get('companyName')?.invalid && (companyDetails.get('companyName')?.touched || companyDetails.get('companyName')?.dirty || isSubmitted)">
                         <ng-container *ngIf="companyDetails.get('companyName')?.hasError('required')">Company Name
                             required!</ng-container>

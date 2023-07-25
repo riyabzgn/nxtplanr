@@ -1,52 +1,77 @@
-<div class="activity-team">
-    <div class="activity-team_container">
-        <div class="activity-team_header">
-            
-          
-            
-            <div class="quick-filter">
-                <div class="quick-filter-option">
-                    <label for="filterDropdown">Quick Filter:</label>
-                    <select id="filterDropdown">
-                        <option value="option1">Angular</option>
-                        <option value="option2">Java</option>
-                        <option value="option3">QA</option>
-                        <option value="option3">Design</option>
-                        <option value="option3">Mobile Dev</option>
-                    </select>
-                </div>
-               
-            </div>
-            <div class="header_btn">
-                <div class="btn_export">
-                    <button>Export</button>
-                </div>
-            </div>
+<div class="activity-list">
+  <div class="activity-list_container">
+    <div class="activity-list_header">
+      <div class="activity-list_top">
+        <div class="header_avatar">
+          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Umesh</h5>
+        </div>
+      </div>
+      <div class="header_btn">
+        <div class="btn_back">
+          <div class="dropdown" tabindex="0">
+            <button class="dropdown-btn" aria-haspopup="menu">
+              <span>Select Team</span>
+              <span class="arrow"></span>
+            </button>
+            <ul class="dropdown-content" role="menu">
+              <li style="--delay: 1"><a href="#">Team Angular</a></li>
+              <li style="--delay: 2"><a href="#">Team Mobile App</a></li>
+              <li style="--delay: 3"><a href="#">Team Java</a></li>
+              <li style="--delay: 4"><a href="#">Team QA</a></li>
+            </ul>
+          </div>
         </div>
 
-        <div class="date-info">
-            <div class="date-content">Date: 16th July - 20th July</div>
+        <div class="btn_export">
+          <button><fa-icon [icon]="faFileExport"></fa-icon>Export</button>
         </div>
-
-        <div class="main-table">
-            <div class="table-container">
-                <div class="user-table">
-                    <table id="usersTable">
-                        <tr>
-                            <th>Name</th>
-                            <th>Working Hours</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr *ngFor="let user of formValue; let i = index">
-                            <td>{{ user.name }}</td>
-                            <td>{{ user.workinghours }}</td>
-                            <td>
-                             <button class="eye-btn" (click)="goToList()" ><i class="fa-solid fa-eye"></i></button>
-                            </td>
-                          </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="main">
+      <div class="main-header">
+        <div class="date">
+          <h2><strong>Date:</strong> 19th July - 24th July</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-table">
+      <div class="table-container">
+        <div class="user-table">
+          <table id="usersTable">
+            <tr>
+              <th>Name</th>
+              <th>Working Hours</th>
+              <th style="width: 200px">Action</th>
+            </tr>
+            <tr *ngFor="let user of formValue; let i = index">
+              <td>{{ user.name }}</td>
+              <td>{{ user.website }}</td>
+              <td>
+                <button class="btn" (click)="goToList(user.id)">
+                  <fa-icon [icon]="faEye"></fa-icon>
+                </button>
+              </td>
+            </tr>
+           
+            <tr *ngIf="isLoading" class="loading-row">
+              <td colspan="3">
+                <h5>
+                  <strong>
+                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the
+                    Teams Data. Please wait....</strong
+                  >
+                </h5>
+              </td>
+            </tr>
+            <tr class="total">
+              <td><strong>Total Hours</strong></td>
+              <td><strong>40 hours</strong></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

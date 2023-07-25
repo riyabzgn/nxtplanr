@@ -20,7 +20,7 @@ const routes: Routes = [
     component: CompanyDetailsComponent
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: CompanyUpdateComponent
   },
 ];
