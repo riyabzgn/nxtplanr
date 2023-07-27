@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../../company.service';
 import { Location } from '@angular/common'
+import { HttpClient } from '@angular/common/http';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-company-update',
@@ -17,6 +19,7 @@ export class CompanyUpdateComponent implements OnInit{
 
   
   companyDetails = this.fb.group({
+    id: [''],
     companyName: ['', Validators.required],
     address: ['', Validators.required],
     companyDesc: ['', Validators.required],
@@ -24,14 +27,17 @@ export class CompanyUpdateComponent implements OnInit{
     url: ['', Validators.required],
   })
   
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private companyservice: CompanyService, private location: Location) { 
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private companyservice: CompanyService, private location: Location, public httpClient: HttpClient) { 
     this.id= this.route.snapshot.paramMap.get('id');
     console.log('check index---> ', this.id);
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.company= this.companyservice.getFormValue().find((company: any)=> company.id ===id);
+    // const id = this.route.snapshot.paramMap.get('id');
+    // this.companyservice.updateCompany(this.company).subscribe((data: apiResponse) => {
+    //   this.router.navigate(['company-list']);
+    // })
+    // this.company= this.companyservice.getFormValue().find((company: any)=> company.id ===id);
     if(this.company){
       this.companyDetails.patchValue({
         companyName: this.company.companyName,
@@ -45,7 +51,7 @@ export class CompanyUpdateComponent implements OnInit{
     // this.company= this.
   }  
 
-  updateCompany(){
+  updateCompanyForm(){
     this.isSubmitted= true;
     if(this.companyDetails.invalid){
       return;

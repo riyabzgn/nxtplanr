@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyService } from '../../company.service';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-company-list',
@@ -11,22 +13,28 @@ export class CompanyListComponent {
 
 
   companyFormValue: any[]=[];
+  companyList: Company[] = [];
 
-  constructor(private router: Router, private companyservice: CompanyService){
-    this.companyFormValue= this.companyservice.getFormValue();
+  constructor(private router: Router, private companyservice: CompanyService, public httpClient: HttpClient){
+    // this.companyFormValue= this.companyservice.getFormValue();
+    // this.companyservice.getCompany().subscribe((data: Company[])=> {
+    // this.companyList = data;
+    // })
   }
 
   addCompanyDetails(){
-    this.router.navigate(['/company-details']);
+    this.router.navigate(['detail']);
     console.log("redirect to company form pageeee");
   }
   
 
-  deleteCompany(index: number){
-    this.companyFormValue.splice(index, 1);
+  deleteCompany(id: number){
+    // this.companyFormValue.splice(index, 1);
+    this.companyservice.deleteCompany(id).subscribe(()=> {
+    });
   }
 
-  updateCompany(id: number){
+  updateCompanyList(id: number){
     this.router.navigate([`/company-update/${id}`]);
     console.log('updateCompany() working');
   }
