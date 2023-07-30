@@ -22,7 +22,7 @@ export class TeamDetailsComponent {
 
 
   addTeam(){
-    this.router.navigate(['/team-list']);
+    this.router.navigate(['list']);
     console.log("heloooihn");
     this.isSubmitted = true;
     console.log("added");
