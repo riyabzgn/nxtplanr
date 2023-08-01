@@ -17,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authKey = sessionStorage.getItem('authKey');
-    console.log('Auth Key:', authKey);
+    console.log('Auth Key:', "Bearer "+authKey);
 
     if (authKey) {
       request = request.clone({

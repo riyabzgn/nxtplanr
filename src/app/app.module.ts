@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor.interceptor';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule,ToastrService } from 'ngx-toastr';
-import { LayoutModule } from './features/layout/layout.module';
+import { LayoutModule } from './features/layout/layout.module'; 
 
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';

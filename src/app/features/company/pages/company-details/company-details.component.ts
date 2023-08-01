@@ -38,11 +38,11 @@ export class CompanyDetailsComponent {
       this.isSubmitted = true;
       // this.companyservice.setFormValue(company);
       console.log(this.companyDetails.value);
-      // const request = this.companyDetails.value;
-      // this.companyservice.addCompany(request).subscribe((data: apiResponse) => {
-      //   console.log("companyDetails value: ", this.companyDetails.value);
-      //   this.router.navigate(['list']);
-      // })
+      const request = this.companyDetails.value;
+      this.companyservice.addCompany(request).subscribe((data) => {
+        console.log("companyDetails value: ", this.companyDetails.value);
+        this.router.navigate(['list']);
+      })
 
     }
 

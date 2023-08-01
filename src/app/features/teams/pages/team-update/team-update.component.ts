@@ -3,6 +3,8 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TeamService } from '../../team.service';
 import { Location } from '@angular/common'
+import { HttpClient } from '@angular/common/http';
+import {Team} from '../team';
 
 @Component({
   selector: 'app-team-update',
@@ -22,15 +24,19 @@ export class TeamUpdateComponent {
     teamName: ['', Validators.required],
     teamDesc: ['', Validators.required],
   })
+  teamForm: any;
   
-  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private teamservice: TeamService, private location: Location) { 
+  constructor(private fb: FormBuilder, private router: Router, private route: ActivatedRoute, private teamservice: TeamService, private location: Location,public http: HttpClient) { 
     this.id= this.route.snapshot.paramMap.get('id');
     console.log('check index---> ', this.id);
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.team= this.teamservice.getFormValue().find((team: any)=> team.id ===id);
+    // this.team= this.teamservice.getFormValue().find((team: any)=> team.id ===id);
+    this.teamservice.updateTeam(this.teamForm.value).subscribe((data:apiResponse) =>{
+      this.router.navigate(['/team/list']);
+    });
     if(this.team){
       this.teamDetails.patchValue({
         id: this.team.id,
@@ -60,3 +66,9 @@ export class TeamUpdateComponent {
     this.location.back();
   }
 }
+
+interface apiResponse{
+  message:string;
+  data:any;
+}
+

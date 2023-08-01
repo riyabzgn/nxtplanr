@@ -17,7 +17,7 @@ export class CompanyService {
     {id:'1', companyName: 'FoneNxt', address: 'Pulchowk, Lalitpur', companyDesc: 'Child company of F1Soft International', contact: '+9779800000000', url: 'www.fonenxt.com'}
   ];
 
-  private companyApiURL="https://e016-110-34-13-219.ngrok-free.app/api/v1/companies/create";
+  private apiBaseUrl = 'https://1a52-110-34-13-219.ngrok-free.app/api/v1';
 
   constructor(public httpClient: HttpClient) { }
   httpOptions = {
@@ -25,24 +25,24 @@ export class CompanyService {
         'Content-Type': 'application/json'
     })
 }
-  getCompany(): Observable <apiResponse>{
-    return this.httpClient.get <apiResponse> (this.companyApiURL + 'companyapi/');
+  getCompany(): Observable <apiResponse>{ 
+    return this.httpClient.get<apiResponse> (this.apiBaseUrl + '?pageNo=0&pageSize=50');
   }
 
   addCompany(company: Company): Observable <apiResponse> {
-    return this.httpClient.post < apiResponse > (this.companyApiURL + 'companyapi/', JSON.stringify(company), this.httpOptions);
+    return this.httpClient.post < apiResponse > (this.apiBaseUrl + 'companies/create', JSON.stringify(company), this.httpOptions);
   }
 
   getCompanyByID(id: any): Observable < apiResponse >{
-    return this.httpClient.get < apiResponse > (this.companyApiURL + '/companyapi/' + id);
+    return this.httpClient.get < apiResponse > (this.apiBaseUrl + '/companyapi/' + id);
   }
 
   updateCompany(company: Company): Observable < apiResponse >{
-    return this.httpClient.put < apiResponse > (this.companyApiURL + '/companyapi/' + company.id, JSON.stringify(company), this.httpOptions);
+    return this.httpClient.put < apiResponse > (this.apiBaseUrl + '/companyapi/' + company.id, JSON.stringify(company), this.httpOptions);
   }
 
   deleteCompany(id: number){
-    return this.httpClient.delete < apiResponse > (this.companyApiURL + 'companyapi/' + id , this.httpOptions);
+    return this.httpClient.delete < apiResponse > (this.apiBaseUrl + 'companyapi/' + id , this.httpOptions);
   }
 
   errorHandler(error:{

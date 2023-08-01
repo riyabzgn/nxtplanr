@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import {Team} from '../team';
 
 @Component({
   selector: 'app-team-view',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class TeamViewComponent {
 
+  constructor(public http: HttpClient) {}
 }
