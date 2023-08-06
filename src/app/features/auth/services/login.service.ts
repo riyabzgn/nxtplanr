@@ -6,21 +6,18 @@ import { ApiConfigService } from './api-config.service';
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private httpClient: HttpClient, private apiConfigService: ApiConfigService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private apiConfigService: ApiConfigService
+  ) {}
 
-  login(requestBody:any) {
+  login(requestBody: any) {
     const loginUrl = this.apiConfigService.getLoginUrl();
-    
-    return this.httpClient.post(loginUrl, requestBody, {observe: 'response'});
+
+    return this.httpClient.post(loginUrl, requestBody, { observe: 'response' });
   }
 
   setAuthKeyInStorage(authKey: string) {
     sessionStorage.setItem('authKey', authKey);
   }
-
-  // isLoggedIn(): boolean {
-  //   const authKey = sessionStorage.getItem('authKey');
-  //  // Return true if authKey exists otherwise return false
-  //   return !!authKey; 
-  // }
 }

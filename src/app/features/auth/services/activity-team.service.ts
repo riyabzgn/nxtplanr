@@ -1,20 +1,40 @@
-// activity-team.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ApiConfigService } from './api-config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ActivityTeamService {
-  private fakeApiUrl = 'https://jsonplaceholder.typicode.com/users';
+  private apiUrl = 'https://e6cb-110-44-114-34.ngrok-free.app/api/v1/activity';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private api: ApiConfigService) {}
 
-  getTableData(): Observable<any> {
-    return this.http.get<any>(this.fakeApiUrl);
+  getTeamUserData(
+    teamId: any,
+    startDate: Date,
+    endDate: Date,
+    pageNo: number,
+    pageSize: number
+  ): Observable<HttpResponse<any>> {
+    return this.http.post<any>(
+      `${this.apiUrl}/team/total-hours?pageNo=${pageNo}&pageSize=${pageSize}`,
+
+      {
+        teamId: teamId,
+        startDate: startDate,
+        endDate: endDate,
+      }
+    );
   }
-  getUserById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.fakeApiUrl}/${id}`);
+  private selectedName: string = '';
+
+  setSelectedName(firstName: string, lastName: string ) {
+    this.selectedName = `${firstName} ${lastName}`;
+  }
+
+  getSelectedName(): string {
+    return this.selectedName;
   }
 }

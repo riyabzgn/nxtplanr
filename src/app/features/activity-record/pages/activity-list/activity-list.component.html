@@ -3,7 +3,7 @@
     <div class="activity-list_header">
       <div class="activity-list_top">
         <div class="header_avatar">
-          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Umesh</h5>
+          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Admin</h5>
         </div>
       </div>
       <div class="header_btn">
@@ -23,63 +23,68 @@
           <h1>TEAM ANGULAR</h1>
         </div>
         <div class="main-header_user">
-          <h4><strong>NAME:</strong>{{ selectedName }}</h4>
-          <h4 *ngIf="isLoading" class="loading-row"> 
-            <i class="fas fa-spinner fa-spin"></i>
-          </h4>
+          <h4><strong>NAME:</strong><p>{{ selectedName }}</p></h4>
          
-        </div>
-        <div class="date">
-          <h2><strong>Date:</strong> 19th July - 24th July</h2>
         </div>
       </div>
     </div>
+    <div class="date">
+      <mat-form-field class="date-range-picker">
+        <mat-label>Select Date Range Here</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            placeholder="Start date"
+            (dateChange)="startDateChanged($event)"
+          />
+          <input
+            matEndDate
+            placeholder="End date"
+            (dateChange)="endDateChanged($event)"
+          />
+        </mat-date-range-input>
 
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <button (click)="fetchUsersData()" class="btn-fetch">Search</button>
+    </div>
     <div class="main-table">
       <div class="table-container">
         <div class="user-table">
           <table id="usersTable">
             <tr>
-              <th>Days</th>
+              <th>Date</th>
               <th>Working Hours</th>
-
               <th>Action</th>
             </tr>
-            <tr>
-              <td>Sunday</td>
 
-              <td>8 hours</td>
-              <td><fa-icon [icon]="faEye"></fa-icon></td>
+            <tr *ngFor="let item of userList">
+              <td>{{ item.taskDate }}</td>
+              <td>{{ item.workingHours }}</td>
+              <td>
+                <button class="btn">
+                  <fa-icon [icon]="faEye" (click)="goToUser(item.id1) "></fa-icon>
+                </button>
+              </td>
             </tr>
-            <tr>
-              <td>Monday</td>
 
-              <td>8 hours</td>
-              <td><fa-icon [icon]="faEye"></fa-icon></td>
+            <tr class="date-range-error" *ngIf="showDateRangeError">
+              <td colspan="3">
+                <strong>
+                  Search for a Week to check working hours per day.
+                </strong>
+              </td>
             </tr>
-            <tr>
-              <td>Tuesday</td>
-
-              <td>8 hours</td>
-              <td><fa-icon [icon]="faEye"></fa-icon></td>
-            </tr>
-            <tr>
-              <td>Wednesday</td>
-
-              <td>8 hours</td>
-              <td><fa-icon [icon]="faEye"></fa-icon></td>
-            </tr>
-            <tr>
-              <td>Thursday</td>
-
-              <td>8 hours</td>
-              <td><fa-icon [icon]="faEye"></fa-icon></td>
-            </tr>
-            <tr>
-              <td><strong>Total Hours</strong></td>
-
-              <td><strong>40 hours</strong></td>
-              <td></td>
+            <tr class="loading-row" *ngIf="isLoading && !showDateRangeError">
+              <td colspan="3">
+                <h5>
+                  <strong>
+                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the
+                    Users Details. Please wait....
+                  </strong>
+                </h5>
+              </td>
             </tr>
           </table>
         </div>

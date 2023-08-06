@@ -3,35 +3,50 @@
     <div class="activity-list_header">
       <div class="activity-list_top">
         <div class="header_avatar">
-          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Umesh</h5>
+          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Admin!</h5>
         </div>
       </div>
       <div class="header_btn">
-        <div class="btn_back">
-          <div class="dropdown" tabindex="0">
-            <button class="dropdown-btn" aria-haspopup="menu">
-              <span>Select Team</span>
-              <span class="arrow"></span>
-            </button>
-            <ul class="dropdown-content" role="menu">
-              <li style="--delay: 1"><a href="#">Team Angular</a></li>
-              <li style="--delay: 2"><a href="#">Team Mobile App</a></li>
-              <li style="--delay: 3"><a href="#">Team Java</a></li>
-              <li style="--delay: 4"><a href="#">Team QA</a></li>
-            </ul>
-          </div>
-        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Select Team</mat-label>
+          <mat-select [(value)]="selectedTeam" (selectionChange)="onTeamSelected($event.value)">
+            <mat-option value="Team Angular">Team Angular</mat-option>
+            <mat-option value="Team Mobile App">Team Mobile App</mat-option>
+            <mat-option value="Team Java">Team Java</mat-option>
+            <mat-option value="Team QA">Team QA</mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <div class="btn_export">
           <button><fa-icon [icon]="faFileExport"></fa-icon>Export</button>
         </div>
       </div>
     </div>
+
     <div class="main">
-      <div class="main-header">
-        <div class="date">
-          <h2><strong>Date:</strong> 19th July - 24th July</h2>
-        </div>
+      <div class="date">
+        <mat-form-field class="date-range-picker">
+          <mat-label>Select Date Range Here</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Start date"
+              (dateChange)="startDateChanged($event)"
+            />
+            <input
+              matEndDate
+              placeholder="End date"
+              (dateChange)="endDateChanged($event)"
+            />
+          </mat-date-range-input>
+
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <button (click)="fetchTableData()" class="btn-fetch">Search</button>
       </div>
     </div>
 
@@ -44,31 +59,50 @@
               <th>Working Hours</th>
               <th style="width: 200px">Action</th>
             </tr>
-            <tr *ngFor="let user of formValue; let i = index">
-              <td>{{ user.name }}</td>
-              <td>{{ user.website }}</td>
+            <tr *ngFor="let user of dataList">
+              <td>{{ user.firstName }} {{ user.lastName }}</td>
+              <td>{{ user.workingHour }}</td>
               <td>
-                <button class="btn" (click)="goToList(user.id)">
+                <button class="btn" (click)="gotoDetail(user.userId, user.firstName, user.lastName)">
                   <fa-icon [icon]="faEye"></fa-icon>
                 </button>
               </td>
             </tr>
-           
-            <tr *ngIf="isLoading" class="loading-row">
+            <tr class="date-range-error" *ngIf="showDateRangeError">
+              <td colspan="3">
+                <strong>
+                  Please select your team and the date range to fetch the data.
+                </strong>
+              </td>
+            </tr>
+            <tr class="loading-row" *ngIf="isLoading && !showDateRangeError">
               <td colspan="3">
                 <h5>
                   <strong>
-                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the
-                    Teams Data. Please wait....</strong
-                  >
+                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the Users Details. Please wait....
+                  </strong>
                 </h5>
               </td>
             </tr>
-            <tr class="total">
-              <td><strong>Total Hours</strong></td>
-              <td><strong>40 hours</strong></td>
-              <td></td>
-            </tr>
+            <div class="pagination">
+              <button
+                class="btn-paginate"
+                (click)="goToPreviousPage()"
+                [disabled]="pageNo === 0"
+              >
+                <fa-icon [icon]="faAnglesLeft"></fa-icon>Previous
+              </button>
+              <span class="page-no"
+                ><strong>Current Page:</strong>{{ pageNo + 1 }}</span
+              >
+              <button
+                class="btn-paginate"
+                (click)="goToNextPage()"
+                [disabled]="!containsData"
+              >
+                Next<fa-icon [icon]="faAnglesRight"></fa-icon>
+              </button>
+            </div>
           </table>
         </div>
       </div>

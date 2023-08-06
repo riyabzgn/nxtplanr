@@ -22,7 +22,7 @@
   margin: 0;
 }
 .header_btn {
-  transform: translate(0, 5rem);
+  transform: translate(0, 1rem);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -122,13 +122,59 @@
     top: 0;
     text-align: center;
   }
+  .main-header{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
   .main-header_user{
     display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-header_user p{
+    text-decoration: underline;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 .loading-row i{
   margin-left: 40px;
   color: red;
 }
+
+.date {
+  display: flex;
+  align-items: center;
+ justify-content: center;
+ text-align: center;
+ transform: translate(0, 12rem);
+
+}
+.btn-fetch {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  transform: translate(10px, -10px);
+}
+.btn {
+  color: black;
+
+  // font-size: 16px;
+
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.btn:hover {
+  color: #aa0010;
+
+  transform: scale(2);
+}
+
+
   @media (max-width: 768px) {
     .main-table{
         width: 100%;

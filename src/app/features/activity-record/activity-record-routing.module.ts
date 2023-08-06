@@ -14,7 +14,7 @@ const routes: Routes = [
     component: ActivityListComponent
   },
   {
-    path: 'user/:id',
+    path:'list/:id/user/:id1',
     component: ActivityUserComponent
   },
 

@@ -1,4 +1,3 @@
-// auth-interceptor.ts
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,
@@ -19,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private apiConfigService: ApiConfigService,
     private router: Router,
-    private toastr: ToastrService // Inject ToastrService here
+    private toastr: ToastrService
   ) {}
 
   intercept(
@@ -32,23 +31,29 @@ export class AuthInterceptor implements HttpInterceptor {
     if (authKey) {
       request = request.clone({
         setHeaders: {
-          Authorization: authKey,
+          Authorization: 'Bearer ' + authKey,
+          'Content-Type': 'application/json',
         },
       });
     }
-
-    request = request.clone({
-      setHeaders: {
-        'Content-Type': 'application/json',
-      },
-    });
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           console.log(error);
+          
+          this.router.navigate(['/login']);
+          return throwError(() => new Error('Not Authenticated'));
+        } else if (error.status === 403) {
+          console.log(error);
+        
+          this.toastr.error('Access Forbidden', 'Error');
+          return throwError(() => new Error('Forbidden'));
         }
-        return throwError(() => new Error('Not Authenticated'));
+
+       
+        console.error(error);
+        return throwError(() => new Error());
       })
     );
   }
