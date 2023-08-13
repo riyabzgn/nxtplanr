@@ -32,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           Authorization: 'Bearer ' + authKey,
-          'Content-Type': 'application/json',
+          // 'Content-Type': 'application/json',
         },
       });
     }
@@ -41,17 +41,16 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           console.log(error);
-          
+
           this.router.navigate(['/login']);
           return throwError(() => new Error('Not Authenticated'));
         } else if (error.status === 403) {
           console.log(error);
-        
+
           this.toastr.error('Access Forbidden', 'Error');
           return throwError(() => new Error('Forbidden'));
         }
 
-       
         console.error(error);
         return throwError(() => new Error());
       })

@@ -1,22 +1,46 @@
 <div class="container p-4">
-    <div class=" d-flex justify-content-end mt-2 p-4">
-        <button type="button" (click)="addCompanyDetails()" class="btn  btn-danger">+ADD COMPANY</button>
-    </div>
-   
-        <div class="row d-flex" >
-        <div class="col-4" *ngFor="let formVal of companyFormValue; let i=index">
-            <div class="card m-4 d-flex  justify-content-center align-items-center flex-wrap-nowrap p-5 g-5">
-                <img src="assets/foneNxtImg.jpeg" class="card-img-top h-50 p-5" alt="angular Icon">
-                  
-                    <p class="">{{formVal.companyDesc}}</p>
-                    <p class="">Address: {{formVal.address}}</p>
-                    <p class="">Contact: {{formVal.contact}}</p>
-                    <div class="buttons d-flex justify-content-around mb-4">
-                        <button type="button" class="btn  border-warning" (click)="updateCompany(formVal.id)">Update Team</button>
-                        <button type="button" class="btn  border-danger" (click)="deleteCompany(i)">Delete Team</button>
-                    </div>
-                </div>
-            </div>
+  <div class="d-flex justify-content-end mt-2 p-4">
+    <button type="button" class="add-btn btn-danger" (click)="openCompanyDetails()">
+      <fa-icon style="margin-right: 5px" [icon]="faSquarePlus"></fa-icon>ADD
+      COMPANY
+    </button>
+  </div>
+  <div class="head-title">
+    <h1><strong>Companies</strong></h1>
+    <hr class="shadowed-hr" />
+  </div>
+
+  <div class="row d-flex">
+    <div class="company-card col-lg-4 col-md-6 col-sm-12" *ngFor="let formVal of companyFormValue; let i = index">
+      <div class="card m-4 d-flex justify-content-center align-items-center flex-wrap-nowrap p-5 g-5">
+        <h1>
+          <strong>{{ formVal.name }}</strong>
+        </h1>
+
+        <div class="about-company">
+          <hr />
+          <p class=""><strong>Address:</strong> {{ formVal.address }}</p>
+          <p class=""><strong>Contact:</strong> {{ formVal.contact }}</p>
         </div>
-    <!-- </div> -->
+
+        <div class="buttons d-flex justify-content-around mb-4">
+          <button type="button" class="btn border-warning" (click)="updateCompany(formVal.id)">
+            <fa-icon [icon]="faPenToSquare"></fa-icon>
+          </button>
+          <button type="button" class="btn border-danger" (click)="deleteCompany(formVal.id)">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="pagination">
+  <button class="btn-paginate" (click)="goToPreviousPage()" [disabled]="pageNo === 0 || isLoading">
+    Previous
+  </button>
+  <span class="page-no"><strong>Current Page:</strong> {{ pageNo + 1 }}</span>
+  <button class="btn-paginate" (click)="goToNextPage()" [disabled]="!hasData || isLoading">
+    Next
+  </button>
 </div>

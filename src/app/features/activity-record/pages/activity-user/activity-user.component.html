@@ -12,9 +12,10 @@
             <fa-icon [icon]="faBackward" (click)="goBack()"></fa-icon>Back
           </button>
         </div>
-        <div class="btn_export">
-          <button><fa-icon [icon]="faFileExport"></fa-icon>Export</button>
-        </div>
+        
+        <button class="export-button" (click)="exportUserDetailsData()" [disabled]="!hasData">
+          <fa-icon [icon]="faFileExport"></fa-icon>Export
+        </button>
       </div>
     </div>
     <div class="main">
@@ -33,11 +34,13 @@
                 matStartDate
                 placeholder="Start date"
                 (dateChange)="startDateChanged($event)"
+                [value]="taskStartDate"
               />
               <input
                 matEndDate
                 placeholder="End date"
                 (dateChange)="endDateChanged($event)"
+                [value]="taskEndDate"
               />
             </mat-date-range-input>
 
@@ -59,16 +62,17 @@
         <div class="user-table">
           <table id="usersTable">
             <tr>
-              <th>Work Title</th>
-              <th>Work Mode</th>
+              <th style="width: 8rem">Work Title</th>
+              <th style="width: 5rem">Mode</th>
 
-              <th>Start Time</th>
-              <th>End Time</th>
-              <th>Work Status</th>
-              <th>Due Date</th>
-              <th>% Completed</th>
-              <th>Duration</th>
-              <th>Task Date</th>
+              <th style="width: 10rem">Start Time</th>
+              <th style="width: 10rem">End Time</th>
+              <th style="width: 5rem">Duration</th>
+              <th style="width: 5rem">Status</th>
+              <th style="width: 5rem">%</th>
+              <th style="width: 10rem">Due Date</th>
+
+              <th style="width: 8rem">Task Date</th>
               <th>Comment</th>
             </tr>
 
@@ -77,33 +81,41 @@
               <td>{{ task.workMode }}</td>
               <td>{{ task.startTime }}</td>
               <td>{{ task.endTime }}</td>
-              <td>{{ task.workStatus }}</td>
-              <td>{{ task.dueDate }}</td>
-              <td>{{ task.percentageCompleted }} %</td>
               <td>{{ task.totalHours }}</td>
-              <td>{{task.taskDate}}</td>
-              <td>{{task.comment}}</td>
-            </tr>
+              <td>{{ task.workStatus }}</td>
+              <td>{{ task.percentageCompleted }} %</td>
+              <td>{{ task.dueDate }}</td>
 
+              <td>{{ task.taskDate }}</td>
+              <td>{{ task.comment }}</td>
+            </tr>
+            <tr class="date-range-error" *ngIf="showDateRangeError">
+              <td colspan="10">
+                <strong>
+                  Search for a Week to check working hours per day.
+                </strong>
+              </td>
+            </tr>
+            <tr class="loading-row" *ngIf="isLoading && !showDateRangeError">
+              <td colspan="10">
+                <h5>
+                  <strong>
+                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the
+                    Users Details. Please wait....
+                  </strong>
+                </h5>
+              </td>
+            </tr>
             <div class="pagination">
-              <button
-                class="btn-paginate"
-                (click)="goToPreviousPage()"
-                [disabled]="pageNo === 0"
-              >
+              <button class="btn-paginate" (click)="goToPreviousPage()" [disabled]="pageNo === 0 || isLoading || !hasData">
                 <fa-icon [icon]="faAnglesLeft"></fa-icon>Previous
               </button>
-              <span class="page-no"
-                ><strong>Current Page:</strong>{{ pageNo + 1 }}</span
-              >
-              <button
-                class="btn-paginate"
-                (click)="goToNextPage()"
-                [disabled]="!containsData"
-              >
+              <span class="page-no"><strong>Current Page:</strong> {{ pageNo + 1 }}</span>
+              <button class="btn-paginate" (click)="goToNextPage()" [disabled]="!containsData || isLoading || !hasData">
                 Next<fa-icon [icon]="faAnglesRight"></fa-icon>
               </button>
             </div>
+
           </table>
         </div>
       </div>

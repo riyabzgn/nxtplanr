@@ -7,7 +7,7 @@ import { ApiConfigService } from './api-config.service';
   providedIn: 'root'
 })
 export class ActivityListService {
-  private apiUrl = 'https://e6cb-110-44-114-34.ngrok-free.app/api/v1/activity';
+  private apiUrl = 'https://dev-fnxt-planr.f1soft.com.np/api/v1/activity';
   constructor(private http: HttpClient, private api: ApiConfigService) { }
 
   getUserWorkingHoursPerDay(
@@ -23,4 +23,23 @@ export class ActivityListService {
       
     });
   }
+  exportListDataToCsv(
+    teamId: number | undefined,
+    userId: number,
+    startDate: Date,
+    endDate: Date
+  ): Observable<Blob> { 
+
+   
+
+    return this.http.post(`${this.apiUrl}/user/working-hours/per-day/csv-download`,
+      {
+        teamId:teamId,
+        userId: userId,
+        startDate: startDate,
+        endDate: endDate,
+      }, { responseType: 'blob' } 
+    );
+  }
+
 }

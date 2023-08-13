@@ -22,19 +22,27 @@
   margin: 0;
 }
 .header_btn {
-  transform: translate(0, 1rem);
+  transform: translate(-9rem, 5rem);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.btn_export button {
+.export-button {
   background-color: #aa0010;
   border: none;
   color: white;
   width: 10rem;
   height: 2.5rem;
+  border-radius: 5px;
+  transform: translate(21rem);
 }
+.export-button:disabled {
+  background-color: gray; 
+  cursor: not-allowed;
+}
+
+
 .btn_back button {
   background-color: grey;
   border: none;
@@ -79,7 +87,7 @@
   transform: translate(0, 13rem);
 }
 .table-container {
-  width: 75%;
+  width: 80%;
   overflow-x: auto;
   max-height: 600px;
   position: relative;
@@ -87,8 +95,8 @@
 #usersTable {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
-  width: 80%;
-  transform: translate(10rem);
+  width: 100%;
+
   cursor: pointer;
   border-radius: 8px;
   box-shadow: 0px 70px 0px 0px rgba(201, 212, 233, 0.1);
@@ -103,6 +111,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 12px;
 }
 
 #usersTable tr:hover {
@@ -115,7 +124,7 @@
   text-align: left;
   background-color: #aa0010;
   color: white;
-  font-size: 18px;
+
   z-index: 2;
   position: sticky;
   top: 0;
@@ -132,9 +141,9 @@
   align-items: center;
   text-align: center;
 }
-.main-header_user p{
+.main-header_user p {
   text-decoration: underline;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 .loading-row i {
   margin-left: 40px;
@@ -157,22 +166,24 @@
   border-radius: 5px;
   transform: translate(10px, -10px);
 }
-.pagination{
-  margin-top: 5px;
-
+.btn-fetch:hover {
+  background-color: #6e020c;
+ 
 }
-.btn-paginate{
+.pagination {
+  margin-top: 5px;
+  width: 35rem;
+}
+.btn-paginate {
   border: none;
   // font-size: 18px;
   width: 8rem;
   border-radius: 8px;
-  
-
 }
-.page-no{
-  
+.page-no {
   width: 8rem;
 }
+
 @media (max-width: 768px) {
   .main-table {
     width: 100%;

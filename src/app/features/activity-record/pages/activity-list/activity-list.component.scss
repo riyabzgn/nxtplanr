@@ -22,19 +22,26 @@
   margin: 0;
 }
 .header_btn {
-  transform: translate(0, 1rem);
+  transform: translate(-9rem, 5rem);
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.btn_export button {
+.export-button {
   background-color: #aa0010;
   border: none;
   color: white;
   width: 10rem;
   height: 2.5rem;
+  border-radius: 5px;
+  transform: translate(21rem);
 }
+.export-button:disabled {
+  background-color: gray; 
+  cursor: not-allowed;
+}
+
 .btn_back button {
   background-color: grey;
   border: none;
@@ -73,59 +80,53 @@
     font-weight: bold;
 }
 .main-table {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform: translate(0, 13rem);
-  }
-  .table-container{
-    width: 75%;
-    overflow-x: auto;
-    max-height: 600px;
-    position: relative;
-  }
-  #usersTable {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 80%;
-    transform: translate(10rem);
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0px 70px 0px 0px rgba(201, 212, 233, 0.1);
-    table-layout: fixed;
-  }
+  margin-top: 12rem;
+ 
   
-  #usersTable td,
-  #usersTable th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    background-color: #f2f2f2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+}
+
+.table-container {
+  width: 100%;
+  max-height: 600px;
+  overflow: auto;
   
-  #usersTable tr:hover {
-    background-color: #ddd;
-  }
-  
-  #usersTable th {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    text-align: left;
-    background-color: #aa0010;
-    color: white;
-    font-size: 18px;
-    z-index: 2;
-    position: sticky;
-    top: 0;
-    text-align: center;
-  }
+}
+
+#usersTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  cursor: pointer;
+  border-radius: 8px;
+  transform: translate(215px, 0px);
+  box-shadow: 0px 10px 10px rgba(201, 212, 233, 0.1);
+}
+
+#usersTable th,
+#usersTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  background-color: #f2f2f2;
+  white-space: nowrap;
+  // overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#usersTable th {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: left;
+  background-color: #aa0010;
+  color: white;
+  font-size: 16px;
+  position: sticky;
+  top: 0;
+}
   .main-header{
     text-align: center;
     justify-content: center;
     align-items: center;
+    margin-top: -5rem;
   }
   .main-header_user{
     display: flex;
@@ -148,8 +149,13 @@
   align-items: center;
  justify-content: center;
  text-align: center;
- transform: translate(0, 12rem);
+ transform: translate(0, 10rem);
 
+}
+.error-message{
+  transform: translate(46rem, 11rem);
+  font-weight: bolder;
+  color: red;
 }
 .btn-fetch {
   background-color: #aa0010;
@@ -159,6 +165,10 @@
   height: 3rem;
   border-radius: 5px;
   transform: translate(10px, -10px);
+}
+.btn-fetch:hover {
+  background-color: #6e020c;
+ 
 }
 .btn {
   color: black;
@@ -174,6 +184,19 @@
   transform: scale(2);
 }
 
+
+.pagination {
+  margin-top: 5px;
+}
+.btn-paginate {
+  border: none;
+ 
+  width: 8rem;
+  border-radius: 8px;
+}
+.page-no {
+  width: 8rem;
+}
 
   @media (max-width: 768px) {
     .main-table{

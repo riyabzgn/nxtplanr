@@ -7,9 +7,10 @@
         </div>
       </div>
       <div class="header_btn">
+      
         <mat-form-field appearance="fill">
           <mat-label>Select Team</mat-label>
-          <mat-select [(value)]="selectedTeam" (selectionChange)="onTeamSelected($event.value)">
+          <mat-select [(value)]="selectedTeam" (selectionChange)="onTeamSelected($event)">
             <mat-option value="Team Angular">Team Angular</mat-option>
             <mat-option value="Team Mobile App">Team Mobile App</mat-option>
             <mat-option value="Team Java">Team Java</mat-option>
@@ -17,16 +18,22 @@
           </mat-select>
         </mat-form-field>
 
-        <div class="btn_export">
-          <button><fa-icon [icon]="faFileExport"></fa-icon>Export</button>
-        </div>
+        <button class="export-button" (click)="exportUserData()" [disabled]="!hasData">
+          <fa-icon [icon]="faFileExport"></fa-icon>Export
+        </button>
+        
       </div>
     </div>
-
+    <div class="main-title">
+     <img src="../../../../../assets/landing.png">
+    </div>
+  
+ 
     <div class="main">
+     
       <div class="date">
         <mat-form-field class="date-range-picker">
-          <mat-label>Select Date Range Here</mat-label>
+          <mat-label>Pick Date Range</mat-label>
           <mat-date-range-input [rangePicker]="picker">
             <input
               matStartDate
@@ -56,8 +63,8 @@
           <table id="usersTable">
             <tr>
               <th>Name</th>
-              <th>Working Hours</th>
-              <th style="width: 200px">Action</th>
+              <th>Total Working Hours</th>
+              <th>Action</th>
             </tr>
             <tr *ngFor="let user of dataList">
               <td>{{ user.firstName }} {{ user.lastName }}</td>
@@ -69,9 +76,9 @@
               </td>
             </tr>
             <tr class="date-range-error" *ngIf="showDateRangeError">
-              <td colspan="3">
+              <td colspan="3" style="text-align: center;">
                 <strong>
-                  Please select your team and the date range to fetch the data.
+                  <fa-icon  [icon]="faLightbulb"></fa-icon> Please select your team and the date range to fetch the data.
                 </strong>
               </td>
             </tr>
@@ -85,24 +92,15 @@
               </td>
             </tr>
             <div class="pagination">
-              <button
-                class="btn-paginate"
-                (click)="goToPreviousPage()"
-                [disabled]="pageNo === 0"
-              >
+              <button class="btn-paginate" (click)="goToPreviousPage()" [disabled]="pageNo === 0 || isLoading || !hasData">
                 <fa-icon [icon]="faAnglesLeft"></fa-icon>Previous
               </button>
-              <span class="page-no"
-                ><strong>Current Page:</strong>{{ pageNo + 1 }}</span
-              >
-              <button
-                class="btn-paginate"
-                (click)="goToNextPage()"
-                [disabled]="!containsData"
-              >
+              <span class="page-no"><strong>Current Page:</strong> {{ pageNo + 1 }}</span>
+              <button class="btn-paginate" (click)="goToNextPage()" [disabled]="!containsData || isLoading || !hasData">
                 Next<fa-icon [icon]="faAnglesRight"></fa-icon>
               </button>
             </div>
+            
           </table>
         </div>
       </div>

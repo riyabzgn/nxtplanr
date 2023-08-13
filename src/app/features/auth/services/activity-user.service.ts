@@ -7,7 +7,7 @@ import { ApiConfigService } from './api-config.service';
   providedIn: 'root'
 })
 export class ActivityUserService {
-  private apiUrl = 'https://e6cb-110-44-114-34.ngrok-free.app/api/v1/activity';
+  private apiUrl = 'https://dev-fnxt-planr.f1soft.com.np/api/v1/activity';
   constructor(private http: HttpClient, private api: ApiConfigService) { }
 
   getUserActivityRecord(
@@ -22,9 +22,30 @@ export class ActivityUserService {
     
       "userId": userId,
       "taskStartDate": taskStartDate,
-      "taskEndDate": taskEndDate
+      "taskEndDate": taskEndDate,
+      
      
     });
+  }
+
+  exportUserDetailsToCsv(
+
+    userId: number,
+    taskStartDate: Date,
+    taskEndDate: Date,
+    pageNo: number,
+    pageSize: number
+  ): Observable<Blob> { 
+
+    return this.http.post(`${this.apiUrl}/users/csv-download?pageNo=${pageNo}&pageSize=${pageSize}`,
+      {
+        userId: userId,
+ 
+        taskStartDate: taskStartDate,
+        taskEndDate: taskEndDate,
+    
+      }, { responseType: 'blob' } 
+    );
   }
 
 }

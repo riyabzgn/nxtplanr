@@ -1,82 +1,61 @@
 <div class="blank"></div>
 
 <div class="container mt-5">
-    <div class="row ">
+    <div class="row">
         <div class="col-1 d-flex justify-content-end">
-            <button type="submit" class="btn border-warning backBtn" (click)="goBackToPrevPage()">Back</button>
+            <button type="button" class="btn border-warning backBtn" (click)="goBackToPrevPage()">Back</button>
         </div>
     </div>
 
-
-
     <div class="row">
-        <div class="col-3">
-
-        </div>
-        <div class="container mt-5 col-4">
+        <div class="col-3"></div>
+        <div class="container mt-5 col-6">
             <div class="container-form">
-
-                <h2>UPDATE COMPANY DETAILS</h2>
-                <form [formGroup]="companyDetails" class="row g-3" class="formDiv" (ngSubmit)="updateCompany()">
+                <h2><strong>UPDATE COMPANY DETAILS</strong></h2>
+                <br>
+                <form [formGroup]="companyDetails" class="row g-3 formDiv" (ngSubmit)="updateCompany()">
                     <div class="container-form-input-div">
-                        <input class="container-form-input" id="color" type="text" placeholder="Company Name"
-                            formControlName="companyName">
-                        <span class="error1"
-                            *ngIf="companyDetails.get('companyName')?.invalid && (companyDetails.get('companyName')?.touched || companyDetails.get('companyName')?.dirty || isSubmitted)">
-                            <ng-container *ngIf="companyDetails.get('companyName')?.hasError('required')">Company Name
-                                required!</ng-container>
+                        <input class="container-form-input" type="text" placeholder="Company Name" formControlName="name">
+                        <span class="error1" *ngIf="companyDetails.get('name')?.invalid && (companyDetails.get('name')?.touched || companyDetails.get('name')?.dirty || isSubmitted)">
+                            <ng-container *ngIf="companyDetails.get('name')?.hasError('required')">Company Name required!</ng-container>
                         </span>
                     </div>
 
                     <div class="container-form-input-div">
-                        <input class="container-form-input" id="color" type="text" placeholder="Address"
-                            formControlName="address">
-                        <span class="error1"
-                            *ngIf="companyDetails.get('address')?.invalid && (companyDetails.get('address')?.touched || companyDetails.get('address')?.dirty || isSubmitted)">
-                            <ng-container *ngIf="companyDetails.get('address')?.hasError('required')">Address
-                                required!</ng-container>
-                        </span>
-                    </div>
-
-                    <div class="container-form-input-desc-div">
-                        <input class="container-form-input-desc" id="color" type="text" placeholder="Description"
-                            formControlName="companyDesc">
-                        <span class="error1"
-                            *ngIf="companyDetails.get('companyDesc')?.invalid && (companyDetails.get('companyDesc')?.touched || companyDetails.get('companyDesc')?.dirty || isSubmitted)">
-                            <ng-container *ngIf="companyDetails.get('companyDesc')?.hasError('required')">Description
-                                required!</ng-container>
+                        <input class="container-form-input" type="text" placeholder="Address" formControlName="address">
+                        <span class="error1" *ngIf="companyDetails.get('address')?.invalid && (companyDetails.get('address')?.touched || companyDetails.get('address')?.dirty || isSubmitted)">
+                            <ng-container *ngIf="companyDetails.get('address')?.hasError('required')">Address required!</ng-container>
                         </span>
                     </div>
 
                     <div class="container-form-input-div">
-                        <input class="container-form-input" id="color" type="text" placeholder="+9779876532525"
-                            formControlName="contact">
-                        <span class="error1"
-                            *ngIf="companyDetails.get('contact')?.invalid && (companyDetails.get('contact')?.touched || companyDetails.get('contact')?.dirty || isSubmitted)">
-                            <ng-container *ngIf="companyDetails.get('contact')?.hasError('required')">Contact
-                                required!</ng-container>
+                        <input class="container-form-input" type="text" placeholder="Description" formControlName="description">
+                        <span class="error1" *ngIf="companyDetails.get('description')?.invalid && (companyDetails.get('description')?.touched || companyDetails.get('description')?.dirty || isSubmitted)">
+                            <ng-container *ngIf="companyDetails.get('description')?.hasError('required')">Description required!</ng-container>
                         </span>
                     </div>
 
                     <div class="container-form-input-div">
-                        <input class="container-form-input" id="color" type="text" placeholder="Website URL"
-                            formControlName="url">
-                        <span class="error1"
-                            *ngIf="companyDetails.get('url')?.invalid && (companyDetails.get('url')?.touched || companyDetails.get('url')?.dirty || isSubmitted)">
-                            <ng-container *ngIf="companyDetails.get('url')?.hasError('required')">Website URL
-                                required!</ng-container>
-                            <ng-container *ngIf="companyDetails.get('url')?.hasError('pattern')">Invalid url
-                                format!</ng-container>
+                        <input class="container-form-input" type="text" placeholder="Contact" formControlName="contact">
+                        <span class="error1" *ngIf="companyDetails.get('contact')?.invalid && (companyDetails.get('contact')?.touched || companyDetails.get('contact')?.dirty || isSubmitted)">
+                            <ng-container *ngIf="companyDetails.get('contact')?.hasError('required')">Contact required!</ng-container>
+                        </span>
+                    </div>
+
+                    <div class="container-form-input-div">
+                        <input class="container-form-input" type="text" placeholder="Website URL" formControlName="url">
+                        <span class="error1" *ngIf="companyDetails.get('url')?.invalid && (companyDetails.get('url')?.touched || companyDetails.get('url')?.dirty || isSubmitted)">
+                            <ng-container *ngIf="companyDetails.get('url')?.hasError('required')">Website URL required!</ng-container>
+                            <ng-container *ngIf="companyDetails.get('url')?.hasError('pattern')">Invalid URL format!</ng-container>
                         </span>
                     </div>
 
                     <div class="container-form-button-div">
-                        <input type="submit" value="ADD" class="container-form-button">
+                        <button type="submit" class="container-form-button">UPDATE</button>
                     </div>
-
                 </form>
             </div>
         </div>
-        <div class="col-3">
-        </div>
+        <div class="col-3"></div>
     </div>
+</div>

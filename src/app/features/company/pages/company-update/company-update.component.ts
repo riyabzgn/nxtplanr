@@ -1,4 +1,3 @@
-import { InvokeFunctionExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -34,21 +33,21 @@ export class CompanyUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.company = this.companyservice
-      .getFormValue()
-      .find((company: any) => company.id === id);
-    if (this.company) {
-      this.companyDetails.patchValue({
-        companyName: this.company.companyName,
-        address: this.company.address,
-        companyDesc: this.company.companyDesc,
-        contact: this.company.contact,
-        url: this.company.url,
-      });
-    }
-
-    // this.company= this.
+    this.companyservice.getCompanyById(this.id).subscribe(
+      (response: any) => {
+        this.company = response;
+        this.companyDetails.patchValue({
+          companyName: this.company.name,
+          address: this.company.address,
+          companyDesc: this.company.description,
+          contact: this.company.contact,
+          url: this.company.url,
+        });
+      },
+      (error) => {
+        console.error('Error fetching company details:', error);
+      }
+    );
   }
 
   updateCompany() {
@@ -56,19 +55,27 @@ export class CompanyUpdateComponent implements OnInit {
     if (this.companyDetails.invalid) {
       return;
     }
-
-    if (this.company) {
-      this.company.companyName = this.companyDetails.get('companyName')?.value;
-      this.company.address = this.companyDetails.get('address')?.value;
-      this.company.companyDesc = this.companyDetails.get('companyDesc')?.value;
-      this.company.contact = this.companyDetails.get('contact')?.value;
-      this.company.url = this.companyDetails.get('url')?.value;
-
-      this.companyservice.updateCompany(this.company);
-    }
-    this.router.navigate(['/company/list']);
+  
+    const updatedCompanyDetails = {
+      id: this.company.id,
+      name: this.companyDetails.get('companyName')?.value,
+      address: this.companyDetails.get('address')?.value,
+      description: this.companyDetails.get('companyDesc')?.value,
+      contact: this.companyDetails.get('contact')?.value,
+      url: this.companyDetails.get('url')?.value,
+    };
+  
+    this.companyservice.updateCompany(this.company.id, updatedCompanyDetails).subscribe(
+      (response: any) => {
+        console.log('Company updated successfully:', response); // Log the response here
+        this.router.navigate(['/company/list']);
+      },
+      (error) => {
+        console.error('Error updating company:', error);
+      }
+    );
   }
-
+  
   goBackToPrevPage(): void {
     this.location.back();
   }

@@ -1,71 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CompanyService {
-  private companyFormData: any[] = [
-    {
-      id: '1',
-      companyName: 'FoneNxt',
-      address: 'Pulchowk, Lalitpur',
-      companyDesc: 'Child company of F1Soft International',
-      contact: '+9779800000000',
-      url: 'www.fonenxt.com',
-    },
-  ];
+  private baseUrl = 'https://dev-fnxt-planr.f1soft.com.np/api/v1/companies';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  updateCompany(company: any) {
-    const index = this.companyFormData.findIndex(
-      (c: any) => c.id === company.id
-    );
-    if (index !== -1) {
-      this.companyFormData[index] = company;
-    }
+  getAllCompanies(pageNo: number, pageSize: number): Observable<any> {
+    const url = `${this.baseUrl}/?pageNo=${pageNo}&pageSize=${pageSize}`;
+    return this.http.get(url);
   }
 
-  setFormValue(data: any) {
-    this.companyFormData.push(data);
+  getCompanyById(id: any): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get(url);
   }
 
-  getFormValue(): any {
-    return this.companyFormData;
+  updateCompany(id: any, companyDetails: any): Observable<any> {
+    const url = `${this.baseUrl}/update`;
+    return this.http.put(url, companyDetails);
+  }
+
+  addNewCompany(companyDetails: any): Observable<any> {
+    const url = `${this.baseUrl}/create`;
+    return this.http.post(url, companyDetails);
+  }
+  deleteCompany(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`);
   }
 }
-
-// import { Observable } from 'rxjs';
-
-
-// export class CompanyService {
-//   private apiUrl = 'https://your-api-url'; // Replace this with your API endpoint
-
-//   constructor(private http: HttpClient) { }
-
-//   // CRUD operations using HttpClient
-
-
-//   createCompany(company: any): Observable<any> {
-//     return this.http.post<any>(this.apiUrl + '/companies', company);
-//   }
-
-//   getCompanies(): Observable<any[]> {
-//     return this.http.get<any[]>(this.apiUrl + '/companies');
-//   }
-
-
-//   getCompanyById(id: string): Observable<any> {
-//     return this.http.get<any>(this.apiUrl + `/companies/${id}`);
-//   }
-
-
-//   updateCompany(company: any): Observable<any> {
-//     return this.http.put<any>(this.apiUrl + `/companies/${company.id}`, company);
-//   }
-
-
-//   deleteCompany(id: string): Observable<any> {
-//     return this.http.delete<any>(this.apiUrl + `/companies/${id}`);
-//   }
-// }

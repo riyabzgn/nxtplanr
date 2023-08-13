@@ -7,7 +7,7 @@ import { ApiConfigService } from './api-config.service';
   providedIn: 'root',
 })
 export class ActivityTeamService {
-  private apiUrl = 'https://e6cb-110-44-114-34.ngrok-free.app/api/v1/activity';
+  private apiUrl = 'https://dev-fnxt-planr.f1soft.com.np/api/v1/activity';
 
   constructor(private http: HttpClient, private api: ApiConfigService) {}
 
@@ -28,9 +28,31 @@ export class ActivityTeamService {
       }
     );
   }
+
+  exportUserDataToCsv(
+    teamId: any,
+    startDate: Date,
+    endDate: Date,
+    pageNo: number,
+    pageSize: number
+  ): Observable<Blob> { 
+
+    return this.http.post(`${this.apiUrl}/team/total-hours/csv-download?pageNo=${pageNo}&pageSize=${pageSize}`,
+      {
+        teamId: teamId,
+        startDate: startDate,
+        endDate: endDate,
+        pageNo:pageNo,
+        pageSize:pageSize
+
+
+      }, { responseType: 'blob' } 
+    );
+  }
+
   private selectedName: string = '';
 
-  setSelectedName(firstName: string, lastName: string ) {
+  setSelectedName(firstName: string, lastName: string) {
     this.selectedName = `${firstName} ${lastName}`;
   }
 
