@@ -1,4 +1,4 @@
-<div class="container p-4">
+<!-- <div class="container p-4">
     <div class=" d-flex justify-content-end p-4">
         <button type="button" class="btn  btn-danger" (click)="addTeamDetails()">+ADD TEAM</button>
     </div>
@@ -9,7 +9,7 @@
                 <h5 class="card-title d-flex justify-content-center p-4">Angular Development</h5>
                 <div class="buttons d-flex justify-content-around mb-4">
                     <button type="button" class="btn border-warning" (click)="gotoActivity()">Check In</button>
-                    <!-- <button type="button" class="btn  border-danger">Delete Team</button> -->
+               
                 </div>
             </div>
         </div>
@@ -63,8 +63,10 @@
             <div class="card m-4">
                 <div class="card">
                     <img src="assets/codingImg.jpeg" class="card-img-top h-50" alt="angular Icon">
-                    <h5 class="card-title d-flex justify-content-center  p-4">{{formVal.teamName}}</h5>
-                    <p class=" p-1">{{formVal.teamDesc}}</p>
+                    <p class=" p-1">{{formVal.id}}</p>
+                    <h5 class="card-title d-flex justify-content-center  p-4">{{formVal.name}}</h5>
+                    <p class=" p-1">{{formVal.description}}</p>
+
                     <div class="buttons d-flex justify-content-around mb-4">
                         <button type="button" class="btn  border-warning" (click)="updateTeam(formVal.id)">UpdateTeam</button>
                         <button type="button" class="btn  border-danger" (click)="deleteTeam(i)">Delete Team</button>
@@ -72,8 +74,56 @@
                 </div>
             </div>
         </div>
+        <div class="pagination">
+            <button
+              class="btn-paginate"
+              (click)="goToPreviousPage()"
+              [disabled]="pageNo === 0"
+            >Previous
+            </button>
+            <span class="page-no"
+              ><strong>Current Page:</strong>{{ pageNo + 1 }}</span
+            >
+            <button
+              class="btn-paginate"
+              (click)="goToNextPage()"
+              [disabled]="!containsData"
+            >
+              Next
+            </button>
+          </div>
     </div>
 </div>
 <div class="row footerr">
     <p>Sanil . Riya . Pritha</p>
-</div>
+</div> -->
+<div class="container p-4">
+    <div class="d-flex justify-content-end p-4">
+      <button type="button" class="btn btn-danger" (click)="addTeamDetails()">+ADD TEAM</button>
+      <br>
+      <!-- <button type="button" class="btn btn-danger" (click)="fetchTeamData()">Fetchhh</button> -->
+    </div>
+    <div class="row">
+      <div class="col-4" *ngFor="let formVal of teamFormValue">
+        <div class="card m-4">
+          <div class="card">
+            <h5 class="card-title d-flex justify-content-center p-4">{{ formVal.name }}</h5>
+            <p class="p-1">{{ formVal.description }}</p>
+            <div class="buttons d-flex justify-content-around mb-4">
+              <button type="button" class="btn border-warning" (click)="updateTeam(formVal.id)">Update Team</button>
+              <!-- <button type="button" class="btn border-danger" (click)="deleteTeam(formVal.id)">Delete Team</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagination">
+      <button class="btn-paginate" (click)="goToPreviousPage()" [disabled]="pageNo === 0">Previous</button>
+      <span class="page-no"><strong>Current Page:</strong> {{ pageNo + 1 }}</span>
+      <button class="btn-paginate" (click)="goToNextPage()" [disabled]="!containsData">Next</button>
+    </div>
+  </div>
+  <div class="row footerr">
+    <p>Sanil . Riya . Pritha</p>
+  </div>
+  

@@ -12,41 +12,63 @@ import { Team } from '../team';
 export class TeamListComponent implements OnInit {
   teamFormValue: any[] = [];
 
-  teamList: Team[] = [];
+  // teamList: Team[] = [];
 
-  constructor(private router: Router, private teamservice: TeamService, public http: HttpClient) { }
+  pageNo: number = 0;
+  pageSize: number = 10;
+  isLoading: boolean = false;
+  containsData: boolean = true;
+
+  companyId: any=1;
+  name: string = 'ESewa';
+  description: string = '';
+
+  constructor(private router: Router, private teamservice: TeamService, public httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.fetchTeams();
-    // this.getTeamById(2);
+    this.fetchTeamData();
+    
+  }
+  fetchTeamData() {
+    this.teamservice.getTeams(
+      this.companyId,
+      this.name,
+      this.description,
+      this.pageNo,
+      this.pageSize
+    ).subscribe({
+      next: (response: apiResponse) => {
+        const data = response.data || []; 
+        this.teamFormValue = data;
+    
+        if (data.length < this.pageSize) {
+          this.containsData = false;
+        } else {
+          this.containsData = true;
+        }
+      },
+      error: (error: any) => {
+        console.error('Error fetching teams:', error);
+   
+      }
+    });
+  }
+  
+  goToPreviousPage() {
+    if (this.pageNo > 0) {
+      this.pageNo--;
+      this.fetchTeamData();
+    }
   }
 
-  fetchTeams() {
-    this.teamservice.getTeams().subscribe((data: any) => {
-      console.log('data', data);
-      this.teamFormValue = data?.content;
-      });
+  goToNextPage() {
+    if (this.containsData) {
+      this.pageNo++;
+      this.fetchTeamData();
+    }
   }
 
-  // getTeamById(id: number) {
-  //   const apiUrl = `https://1a52-110-34-13-219.ngrok-free.app/api/v1/teams/detail/${id}`;
-
-  //   const headers = {
-  //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyVHlwZSI6IlJPTEVfQURNSU4iLCJzdWIiOiJkYXdhQGdtYWlsLmNvbSIsImlhdCI6MTY5MDI2NTQyOSwiZXhwIjoxNjkwMzAxNDI5fQ.6Kg5u5vfHaGZD094DgkRFk-c71jMLULrP6TBkWY0-cM'
-  //   };
-
-  //   this.http.get(apiUrl, { headers }).subscribe(
-  //     (response: any) => {
-      
-  //       console.log('Team by ID:', response);
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching team by ID:', error);
-  //     }
-  //   );
-  // }
-
-  addTeamDetails() {
+ addTeamDetails() {
     this.router.navigate(['/details']);
   }
 
@@ -54,11 +76,11 @@ export class TeamListComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  deleteTeam(id: number) {
-    this.teamservice.removeTeam(id).subscribe(() => {
-      this.refreshTeam();
-    });
-  }
+  // deleteTeam(id: number) {
+  //   this.teamservice.removeTeam(id).subscribe(() => {
+  //     this.refreshTeam();
+  //   });
+  // }
 
   refreshTeam() {
     console.log('refreshTeam() called.');
@@ -71,7 +93,7 @@ export class TeamListComponent implements OnInit {
 
 
 }
-interface data{
+interface data {
   numberofElements: any;
 }
 interface apiResponse {

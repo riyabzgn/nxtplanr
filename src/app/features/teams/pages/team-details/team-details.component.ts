@@ -50,6 +50,7 @@ export class TeamDetailsComponent {
     console.log("added");
   }
 
+
 }
 
 interface apiResponse{

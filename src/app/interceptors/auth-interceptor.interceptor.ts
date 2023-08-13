@@ -17,21 +17,18 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authKey = sessionStorage.getItem('authKey');
-    console.log('Auth Key:', "Bearer "+authKey);
+ 
 
     if (authKey) {
       request = request.clone({
         setHeaders: {
-          Authorization: authKey
+          Authorization: 'Bearer ' + authKey,
+          // 'Content-Type': 'application/json',
         }
       });
     }
   
-    request = request.clone({
-      setHeaders: {
-        'Content-Type': 'application/json'
-      }
-    });
+
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
