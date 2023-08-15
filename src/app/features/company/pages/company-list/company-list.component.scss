@@ -1,13 +1,86 @@
-.btn{
-    max-width:39%;
-    line-height: 1;
+
+.btn {
+  margin-right: 10px;
+  line-height: 2;
+  width: 80px;
 }
 
-.btn.border-warning:hover {
-    background-color: #ffc106;
+.row {
+  margin-top: 60px;
 }
 
-.btn.border-danger:hover{
-    background-color: #dd3444;
+.btn.border-warning {
+  background-color: green;
+  border: none;
+  color: white;
+}
 
+.shadowed-hr {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn.border-danger {
+  background-color: #dd3444;
+  border: none;
+  color: white;
+}
+
+.pagination {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.btn-paginate {
+  border: none;
+  width: 8rem;
+  border-radius: 8px;
+}
+
+.page-no {
+  width: 8rem;
+}
+
+.card {
+  background-color: whitesmoke;
+  border: none;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h1 {
+  color: #b90f20;
+}
+
+.about-company {
+  text-align: left;
+  justify-content: left;
+}
+
+.add-btn {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+}
+
+.head-title {
+  color: black;
+  text-align: center;
+  font-weight: bolder;
+}
+@media (max-width: 600px) {
+  .card {
+    background-color: whitesmoke;
+    border: none;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+
+
+  }
 }

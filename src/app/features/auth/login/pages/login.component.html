@@ -1,14 +1,10 @@
 <div class="wrapper">
   <header>
-
-  
     <fa-icon [icon]="isLogged ? faLockOpen : faLock"></fa-icon>
     <br /><br />
     <img class="logo-login" src="../../../../../assets/logo.png" />
-    <br>
-
+    <br />
   </header>
- 
 
   <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
     <div class="field email">
@@ -16,7 +12,6 @@
         <div class="email-icon">
           <span class="icon">
             <fa-icon [icon]="faEnvelope"></fa-icon>
-            <!-- Add the Font Awesome email icon here -->
           </span>
         </div>
 
@@ -82,8 +77,7 @@
         </span>
       </div>
     </div>
-
-    <br />
+<br />
     <button type="submit" value="Submit" id="btn">
       <fa-icon [icon]="faRightToBracket"></fa-icon>Login
     </button>

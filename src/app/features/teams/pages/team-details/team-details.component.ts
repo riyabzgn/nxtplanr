@@ -13,9 +13,10 @@ import { TeamService } from '../../team.service';
 export class TeamDetailsComponent {
 
   teamDetails = this.fb.group({
-    id: [''],
+
     teamName: ['', Validators.required],
-    teamDesc: ['', Validators.required]
+    teamDesc: ['', Validators.required],
+    companyId: ['', Validators.required],
   });
 
   isSubmitted = false;
@@ -28,33 +29,31 @@ export class TeamDetailsComponent {
   ) { }
 
 
-  addTeam(){
-    this.router.navigate(['list']);
-    console.log("heloooihn");
-    this.isSubmitted = true;
-    console.log(this.teamDetails.value);
+  addTeam() {
 
-    if (this.teamDetails.invalid) {
+    if (this.teamDetails.invalid)
       return;
-    }
-    
-    // this.teamservice.setFormData(this.teamDetails.value);
 
+    const team = {
 
-    const request: any = this.teamDetails.value;
-    this.teamservice.addTeam(request).subscribe((data: any) => {
-      console.log('res from api', data);
-      this.router.navigate(['/team-list']);
-    });
+      name: this.teamDetails.get('teamName')?.value,
+      description: this.teamDetails.get('teamDesc')?.value,
+      companyId: this.teamDetails.get('companyId')?.value,
+    };
 
-    console.log("added");
+    this.teamservice.addNewTeam(team).subscribe(
+      (response) => {
+        console.log("Team added:", response);
+        this.router.navigate(['/team/list']);
+      },
+      (error) => {
+        console.error("Error adding team:", error);
+      }
+    );
   }
-
-
 }
 
-interface apiResponse{
-  message:string;
-  data:any;
-}
-
+// interface apiResponse{
+//   message:string;
+//   data:any;
+// }

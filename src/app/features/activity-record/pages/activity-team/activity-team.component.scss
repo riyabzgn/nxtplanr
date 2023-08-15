@@ -1,133 +1,299 @@
-  .row {
-      height: 5px;
-      width:85%;
-  }
+.activity-list {
+  margin: 2rem;
+}
+.activity-list_top {
+  position: fixed;
+  top: 2rem;
+  right: 8rem;
+  padding: 15px;
+  width: 10rem;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 8px;
+}
 
-  .header_btn {
+.header_avatar {
+  text-align: right;
+}
+.header_avatar fa-icon {
+  margin-right: 10px;
+}
+.header_avatar h5 {
+  margin: 0;
+}
+.header_btn {
+  transform: translate(-9rem, 5rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.header_btn mat-label{
+ 
+  border: none;
+  font-weight: bolder;
+}
+.export-button {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  transform: translate(21rem);
+}
+.export-button:disabled {
+  background-color: gray; 
+  cursor: not-allowed;
+}
+.btn_back {
+  width: 10rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  color: rgba(218, 13, 13, 0.875);
+  transform: translate(-20px);
+}
+
+.btn_back fa-icon {
+  margin-right: 10px;
+}
+.btn_export fa-icon {
+  margin-right: 10px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translate(0, 10rem);
+}
+
+.main-header_team h1 {
+  color: #aa0010;
+  font-weight: bold;
+}
+.date{
+  margin-top: -50px;
+}
+.date mat-label{
+ 
+  border: none;
+  font-weight: bolder;
+}
+.main-table {
+    margin-top: 10rem;
+   
     
-      width: 85%;
-      display: flex;
-      flex-direction: row;
-      justify-content: end;
   }
-
-  .btn_export button {
-      background-color: #aa0010;
-      border: none;
-      color: white;
-      width: 10rem;
-      height: 2.5rem;
-      transform: translate(-12rem);
-  }
-
-  .main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      transform: translate(-3rem, 8rem);
-  }
-
-  .main-header_team h1 {
-      color: #aa0010;
-      font-weight: bold;
-  }
-
-  .main-table {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      transform: translate(0, 8rem);
-  }
-
+  
   .table-container {
-      width: 75%;
-      overflow-x: auto;
-      max-height: 600px;
-      position: relative;
+    width: 100%;
+    max-height: 600px;
+    overflow: auto;
   }
-
+  
   #usersTable {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 80%;
-      transform: translate(10rem);
-      cursor: pointer;
-      border-radius: 8px;
-      box-shadow: 0px 70px 0px 0px rgba(201, 212, 233, 0.1);
-      table-layout: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    cursor: pointer;
+    border-radius: 8px;
+    transform: translate(215px, 0px);
+    box-shadow: 0px 10px 10px rgba(201, 212, 233, 0.1);
+  }
+  
+  #usersTable th,
+  #usersTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: #f2f2f2;
+    white-space: nowrap;
+    // overflow: hidden;
+    text-overflow: ellipsis;
+   
+  }
+  
+  #usersTable th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: left;
+    background-color: #aa0010;
+    color: white;
+    font-size: 16px;
+    position: sticky;
+    top: 0;
+    
+  }
+  
+.total {
+  color: red;
+}
+.dropdown {
+  max-width: 15em;
+  position: relative;
+}
+
+.dropdown-btn {
+  background: #aa0010;
+  font-size: 18px;
+  width: 150px;
+  border: none;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.arrow {
+  transform: translate(0.2rem);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+  transition: transform ease-in-out 0.3s;
+}
+.main-title img {
+  height: 150px;
+  width: 395px;
+  transform: translate(47rem, 50px);
+}
+.dropdown-content {
+  list-style: none;
+  position: absolute;
+  top: 3em;
+  left: 0;
+  padding: 5px 2px; /* Add some padding to the dropdown */
+  background-color: rgb(210, 207, 207);
+  border-radius: 0.5em;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  width: 9.5rem;
+}
+
+.dropdown-content li {
+  height: 35px;
+  transition: 0.5s;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-content li:hover {
+  background: #aa0010;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown-content li a {
+  display: block;
+  cursor: pointer;
+  padding: 0.5em 0.5em;
+  color: white;
+  margin: 0.1em 0;
+  text-decoration: none;
+}
+
+/* base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  color: black;
+
+  font-size: 16px;
+
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.btn:hover {
+  color: #aa0010;
+
+  transform: scale(1.5);
+}
+.btn-fetch {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  transform: translate(10px, -10px);
+}
+.btn-fetch:hover {
+  background-color: #6e020c;
+ 
+}
+.pagination {
+  margin-top: 5px;
+}
+.btn-paginate {
+  border: none;
+
+  width: 8rem;
+  border-radius: 8px;
+}
+.page-no {
+  width: 8rem;
+}
+
+@media (max-width: 768px) {
+  .main-table {
+    width: 100%;
+  }
+  .header_btn mat-form-field {
+    transform: translate(8rem, 7rem);
+  }
+  .date mat-form-field {
+    display: flex;
+    transform: translate(2rem, -4rem);
+  }
+  .main {
+    flex-direction: column;
+  }
+  #usersTable {
+    width: 80%;
+    transform: translate(3rem, 0rem);
   }
 
   #usersTable td,
   #usersTable th {
-      border: 1px solid #ddd;
-      padding: 8px;
-      background-color: #fffaef;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    font-size: 12px;
+    padding: 10px;
   }
 
-  #usersTable tr:hover {
-      background-color: #ddd;
+  .user-table {
+    overflow-x: auto;
+    width: 100%;
   }
-
-  #usersTable th {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      text-align: left;
-      background-color: #aa0010;
-      color: white;
-      font-size: 18px;
-      z-index: 2;
-      position: sticky;
-      top: 0;
-      text-align: center;
+  .main-title img {
+    height: 154px;
+    width: 395px;
+    transform: translate(43rem, 22px);
   }
-
-  .quick-filter {
-      width: 85%;
-      display: flex;
-      justify-content: center;
-      transform: translate(7.5rem);
-
-      label {
-justify-content: flex-start;
-          color: #aa0010;
-          font-weight: bold;
-      }
-
-      select {
-          width: 150px;
-          padding: 5px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-
-      }
+  .btn-fetch {
+    height: 40px;
+    transform: translate(2rem, -5rem);
   }
-
-  .quick-filter-option{
-    justify-content: flex-start;
+  .btn_export button {
+    transform: translate(-5.5rem, 19rem);
   }
-
-  .date-info {
-      
-      display: flex;
-      justify-content: flex-start;
-      width:74%;
-      font-weight: bold;
-      color: #aa0010;
-      font-size: 15px;
-      transform:translate(20rem,7rem);
+  .activity-list_top {
+    transform: translate(7rem, -1rem);
   }
-
-  .activity-team_header{
-    display: flex;
-    justify-content: space-between;
-    transform: translate(0, 4rem);
-  }
-
-  .eye-btn{
-    border:none;
-  }
+}
+@media (max-width: 900px) {
+}
+@media (max-width: 1000px) {
+}
+/* Base styles */
+// S

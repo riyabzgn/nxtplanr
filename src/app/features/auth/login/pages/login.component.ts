@@ -2,8 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { faEye, faEyeSlash, faRightToBracket, faLock, faLockOpen, faEnvelope, faKey } from '@fortawesome/free-solid-svg-icons';
-import { ToastrService,ActiveToast  } from 'ngx-toastr';
+import {
+  faEye,
+  faEyeSlash,
+  faRightToBracket,
+  faLock,
+  faLockOpen,
+  faEnvelope,
+  faKey,
+} from '@fortawesome/free-solid-svg-icons';
+import { ToastrService, ActiveToast } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,17 +31,17 @@ export class LoginComponent implements OnInit {
   faKey = faKey;
   activeErrorToast: ActiveToast<any> | null = null;
 
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginService: LoginService,
+    private toastr: ToastrService
+  ) {}
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private loginService: LoginService,
-    private toastr: ToastrService 
-  ) { }
 
   ngOnInit() {
     // Check if the user is already logged in
@@ -71,11 +79,10 @@ export class LoginComponent implements OnInit {
       const payload = {
         ...this.loginForm.value,
         userType: 'ROLE_ADMIN',
-        fcmToken: 'jbssdcmnjnj345kjbkbi45'
+        fcmToken: 'jbssdcmnjnj345kjbkbi45',
       };
 
       this.isLoading = true;
-
 
       this.loginService.login(payload).subscribe({
         next: (res: any) => {
@@ -84,18 +91,21 @@ export class LoginComponent implements OnInit {
             this.loginService.setAuthKeyInStorage(res?.body?.token);
             this.isLogged = true;
 
-            this.toastr.success('<h6>You are Logged in successfully!</h6>', 'Welcome to nxtPlanR', {
-          
-              progressBar: true,
-              timeOut: 2000, 
-              enableHtml: true, 
-              toastClass: 'toast-success',
-            });
-  
+            this.toastr.success(
+              '<h6>You are Logged in successfully!</h6>',
+              'Welcome to nxtPlanR',
+              {
+                progressBar: true,
+                timeOut: 2000,
+                enableHtml: true,
+                toastClass: 'toast-success',
+              }
+            );
+
             setTimeout(() => {
               this.isLoading = false;
-       
-              this.router.navigate(['/activity/list']);
+
+              this.router.navigate(['/activity']);
             }, 1000);
           } else {
             console.log('Unauthorized user');
@@ -112,16 +122,16 @@ export class LoginComponent implements OnInit {
             'Failed to authenticate. Please log in with the registered login information.',
             'Login Failed',
             {
-            
               progressBar: true,
               timeOut: 5000,
               enableHtml: true,
-              toastClass: 'toast-error', 
+              toastClass: 'toast-error',
             }
           );
         },
       });
-      // Simulate a 3-second delay before sending the login request
     }
   }
+
+
 }

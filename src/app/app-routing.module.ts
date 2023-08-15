@@ -26,11 +26,6 @@ const routes: Routes = [
           import('./features/teams/team.module').then((m) => m.TeamModule),
       },
       {
-        path: 'user',
-        loadChildren: () =>
-          import('./features/user/user.module').then((m) => m.UserModule),
-      },
-      {
         path: 'activity',
         loadChildren: () =>
           import('./features/activity-record/activity-record.module').then((m) => m.ActivityRecordModule),

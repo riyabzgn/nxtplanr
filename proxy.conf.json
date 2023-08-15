@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "https://dev-fnxt-planr.f1soft.com.np",
+      "secure": false
+    }
+  }
+  

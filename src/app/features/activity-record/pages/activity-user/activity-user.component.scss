@@ -1,0 +1,229 @@
+.activity-list {
+  margin: 2rem;
+}
+.activity-list_top {
+  position: fixed;
+  top: 2rem;
+  right: 8rem;
+  padding: 15px;
+  width: 10rem;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 8px;
+}
+
+.header_avatar {
+  text-align: right;
+}
+.header_avatar fa-icon {
+  margin-right: 10px;
+}
+.header_avatar h5 {
+  margin: 0;
+}
+.header_btn {
+  transform: translate(-9rem, 5rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.export-button {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 5px;
+  transform: translate(21rem);
+}
+.export-button:disabled {
+  background-color: gray; 
+  cursor: not-allowed;
+}
+
+
+.btn_back button {
+  background-color: grey;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 2.5rem;
+}
+.btn_back {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.date h2 {
+  font-size: 23px;
+  position: relative;
+  transform: translate(-22.1rem, 3rem);
+}
+
+.btn_back fa-icon {
+  margin-right: 10px;
+}
+.btn_export fa-icon {
+  margin-right: 10px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translate(0, 10rem);
+}
+
+.main-header_team h1 {
+  color: #aa0010;
+  font-weight: bold;
+}
+.main-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translate(0, 13rem);
+}
+.table-container {
+  width: 80%;
+  overflow-x: auto;
+  max-height: 600px;
+  position: relative;
+}
+#usersTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0px 70px 0px 0px rgba(201, 212, 233, 0.1);
+  table-layout: fixed;
+}
+
+#usersTable td,
+#usersTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  background-color: #f2f2f2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+#usersTable tr:hover {
+  background-color: #ddd;
+}
+
+#usersTable th {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  text-align: left;
+  background-color: #aa0010;
+  color: white;
+
+  z-index: 2;
+  position: sticky;
+  top: 0;
+  text-align: center;
+}
+.main-header {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.main-header_user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.main-header_user p {
+  text-decoration: underline;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.loading-row i {
+  margin-left: 40px;
+  color: red;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transform: translate(0, 2rem);
+}
+
+.btn-fetch {
+  background-color: #aa0010;
+  border: none;
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  transform: translate(10px, -10px);
+}
+.btn-fetch:hover {
+  background-color: #6e020c;
+ 
+}
+.pagination {
+  margin-top: 5px;
+  width: 35rem;
+}
+.btn-paginate {
+  border: none;
+  // font-size: 18px;
+  width: 8rem;
+  border-radius: 8px;
+}
+.page-no {
+  width: 8rem;
+}
+
+@media (max-width: 768px) {
+  .main-table {
+    width: 100%;
+  }
+  .date h2 {
+    font-size: 20px;
+    position: relative;
+    transform: translate(-3rem, 3rem);
+  }
+  .main {
+    flex-direction: column;
+  }
+  #usersTable {
+    width: 100%;
+    transform: translate(0); /* Remove horizontal translation */
+  }
+
+  #usersTable td,
+  #usersTable th {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .user-table {
+    overflow-x: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .date h2 {
+    font-size: 20px;
+    position: relative;
+    transform: translate(-2rem, 3rem);
+  }
+}
+@media (max-width: 1000px) {
+  .date h2 {
+    font-size: 20px;
+    position: relative;
+    transform: translate(-2rem, 3rem);
+  }
+}

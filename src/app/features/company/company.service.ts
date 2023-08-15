@@ -1,82 +1,38 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
-import { Company } from '../company/pages/company';
+
+import { Observable } from 'rxjs';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CompanyService {
-  value(value: any) {
-    throw new Error('Method not implemented.');
+  private baseUrl = 'https://dev-fnxt-planr.f1soft.com.np/api/v1/companies';
+
+  constructor(private http: HttpClient) {}
+
+  getAllCompanies(pageNo: number, pageSize: number): Observable<any> {
+    const url = `${this.baseUrl}/?pageNo=${pageNo}&pageSize=${pageSize}`;
+    return this.http.get(url);
   }
-  getFormValue(): any[] {
-    throw new Error('Method not implemented.');
+
+  getCompanyById(id: any): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get(url);
   }
 
-  private companyFormData: any[]=[
-    {id:'1', companyName: 'FoneNxt', address: 'Pulchowk, Lalitpur', companyDesc: 'Child company of F1Soft International', contact: '+9779800000000', url: 'www.fonenxt.com'}
-  ];
+  updateCompany(id: any, companyDetails: any): Observable<any> {
+    const url = `${this.baseUrl}/update`;
+    return this.http.put(url, companyDetails);
+  }
 
-  private apiBaseUrl = 'https://1a52-110-34-13-219.ngrok-free.app/api/v1';
-
-  constructor(public httpClient: HttpClient) { }
-  httpOptions = {
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-    })
+  addNewCompany(companyDetails: any): Observable<any> {
+    const url = `${this.baseUrl}/create`;
+    return this.http.post(url, companyDetails);
+  }
+  deleteCompany(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/delete/${id}`);
+  }
 }
-  getCompany(): Observable <apiResponse>{ 
-    return this.httpClient.get<apiResponse> (this.apiBaseUrl + '?pageNo=0&pageSize=50');
-  }
 
-  addCompany(company: Company): Observable <apiResponse> {
-    return this.httpClient.post < apiResponse > (this.apiBaseUrl + 'companies/create', JSON.stringify(company), this.httpOptions);
-  }
-
-  getCompanyByID(id: any): Observable < apiResponse >{
-    return this.httpClient.get < apiResponse > (this.apiBaseUrl + '/companyapi/' + id);
-  }
-
-  updateCompany(company: Company): Observable < apiResponse >{
-    return this.httpClient.put < apiResponse > (this.apiBaseUrl + '/companyapi/' + company.id, JSON.stringify(company), this.httpOptions);
-  }
-
-  deleteCompany(id: number){
-    return this.httpClient.delete < apiResponse > (this.apiBaseUrl + 'companyapi/' + id , this.httpOptions);
-  }
-
-  errorHandler(error:{
-    error:{
-      messsage:string;
-    }; status: any;
-    message: any;
-  }) {
-    let errorMessage= '';
-    if (error.error instanceof ErrorEvent){
-      errorMessage= error.error.message;
-    }
-    else{
-      errorMessage =`Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
-  }
-
-  // updateCompany(company : any){
-  //   const index= this.companyFormData.findIndex((c:any)=> c.id === company.id);
-  //   if(index!== -1){
-  //     this.companyFormData[index]=company;
-  //   }
-  // }
-
-  // setFormValue(data: any){
-  //   this.companyFormData.push(data);
-  // }
-
-  // getFormValue(): any{
-  //   return this.companyFormData;
-  // }
-}
-interface apiResponse {
-  message: string;
-  data: any
-}
+  

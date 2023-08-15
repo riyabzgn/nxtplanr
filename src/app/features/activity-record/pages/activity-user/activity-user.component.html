@@ -1,0 +1,124 @@
+<div class="activity-list">
+  <div class="activity-list_container">
+    <div class="activity-list_header">
+      <div class="activity-list_top">
+        <div class="header_avatar">
+          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Admin</h5>
+        </div>
+      </div>
+      <div class="header_btn">
+        <div class="btn_back">
+          <button routerLink="/activity">
+            <fa-icon [icon]="faBackward" (click)="goBack()"></fa-icon>Back
+          </button>
+        </div>
+        
+        <button class="export-button" (click)="exportUserDetailsData()" [disabled]="!hasData">
+          <fa-icon [icon]="faFileExport"></fa-icon>Export
+        </button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="main-header">
+        <div class="main-header_team">
+          <h1>TEAM ANGULAR</h1>
+        </div>
+        <div class="main-header_user">
+          <h4><strong>NAME:</strong>{{ selectedName }}</h4>
+        </div>
+        <div class="date">
+          <mat-form-field class="date-range-picker">
+            <mat-label>Select Date Range Here</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input
+                matStartDate
+                placeholder="Start date"
+                (dateChange)="startDateChanged($event)"
+                [value]="taskStartDate"
+              />
+              <input
+                matEndDate
+                placeholder="End date"
+                (dateChange)="endDateChanged($event)"
+                [value]="taskEndDate"
+              />
+            </mat-date-range-input>
+
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button class="btn-fetch" (click)="fetchActivityRecord()">
+            Check Activity
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-table">
+      <div class="table-container">
+        <div class="user-table">
+          <table id="usersTable">
+            <tr>
+              <th style="width: 8rem">Work Title</th>
+              <th style="width: 5rem">Mode</th>
+
+              <th style="width: 10rem">Start Time</th>
+              <th style="width: 10rem">End Time</th>
+              <th style="width: 5rem">Duration</th>
+              <th style="width: 5rem">Status</th>
+              <th style="width: 5rem">%</th>
+              <th style="width: 10rem">Due Date</th>
+
+              <th style="width: 8rem">Task Date</th>
+              <th>Comment</th>
+            </tr>
+
+            <tr *ngFor="let task of activityList">
+              <td>{{ task.workTitle }}</td>
+              <td>{{ task.workMode }}</td>
+              <td>{{ task.startTime }}</td>
+              <td>{{ task.endTime }}</td>
+              <td>{{ task.totalHours }}</td>
+              <td>{{ task.workStatus }}</td>
+              <td>{{ task.percentageCompleted }} %</td>
+              <td>{{ task.dueDate }}</td>
+
+              <td>{{ task.taskDate }}</td>
+              <td>{{ task.comment }}</td>
+            </tr>
+            <tr class="date-range-error" *ngIf="showDateRangeError">
+              <td colspan="10">
+                <strong>
+                  Search for a Week to check working hours per day.
+                </strong>
+              </td>
+            </tr>
+            <tr class="loading-row" *ngIf="isLoading && !showDateRangeError">
+              <td colspan="10">
+                <h5>
+                  <strong>
+                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the
+                    Users Details. Please wait....
+                  </strong>
+                </h5>
+              </td>
+            </tr>
+            <div class="pagination">
+              <button class="btn-paginate" (click)="goToPreviousPage()" [disabled]="pageNo === 0 || isLoading || !hasData">
+                <fa-icon [icon]="faAnglesLeft"></fa-icon>Previous
+              </button>
+              <span class="page-no"><strong>Current Page:</strong> {{ pageNo + 1 }}</span>
+              <button class="btn-paginate" (click)="goToNextPage()" [disabled]="!containsData || isLoading || !hasData">
+                Next<fa-icon [icon]="faAnglesRight"></fa-icon>
+              </button>
+            </div>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

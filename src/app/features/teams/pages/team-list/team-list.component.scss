@@ -1,39 +1,110 @@
-$companyBtn: #bd322f;
-
-.btn.border-warning:hover {
-    background-color: #ffc106;
+/* Add Bootstrap container class to handle responsive layout */
+.container {
+    max-width: 80%;
+    padding-right: 15px;
+    padding-left: 150px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.btn.border-danger:hover{
-    background-color: #dd3444;
-    color: #fff;
+.col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
-.footerr{
 
-    // border-top: 2px solid $companyBtn;
-    background-color: #fffaef;
-    height:50px;
-
-    p{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: $companyBtn;
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
 
 
+.row {
+    margin-bottom: 20px;
+}
+
+
+.card p {
+    font-size: 20px;
+}
+
+
+.footerr p {
+    text-align: center;
+}
+
+
+@media (min-width: 992px) {
+    .col-4 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
     }
 
     .pagination {
         margin-top: 5px;
-      }
-      .btn-paginate {
+    }
+
+    .btn-paginate {
         border: none;
         width: 8rem;
         border-radius: 8px;
-      }
-      .page-no {
+    }
+
+    .page-no {
         width: 8rem;
-      }
+    }
+}
+
+@media (max-width: 991px) {
+    .col-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .card-img-top {
+        height: 150px;
+        /* Adjust this value as needed */
+    }
+
+    .card p {
+        font-size: 20px;
+    }
+}
+
+.btn-primary {
+    background-color: white;
+    color: #dc3545;
+    border-color: #dc3545;
+    font-size: 14px;
+    width: 8%;
+}
+
+.field {
+    transform: translate(-1rem);
+}
+
+.head-title{
+color:#dc3545;
+text-align: center;
+font-size: 3rem;
+}
+
+.pagination{
+    transform: translate(34rem);
+}
+
+.card-title{
+    color:#dc3545;
+    font-size: 2rem;
+    font-weight: bolder;
 }
 

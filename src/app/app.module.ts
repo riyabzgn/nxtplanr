@@ -6,16 +6,15 @@ import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor.interceptor';
 // import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ToastrModule,ToastrService } from 'ngx-toastr';
-import { LayoutModule } from './features/layout/layout.module'; 
-
+import { LayoutModule } from './features/layout/layout.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamModule } from './features/teams/team.module';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CompanyModule } from './features/company/company.module';
-import { UserModule } from './features/user/user.module';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 
 
 @NgModule({
@@ -32,10 +31,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     FormsModule,
     TeamModule,
-    CompanyModule,
+    // CompanyModule,
     RouterModule,
     LayoutModule,
-    UserModule,
+    BrowserAnimationsModule,
     FontAwesomeModule,
     ToastrModule.forRoot({
       
@@ -51,6 +50,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   providers: [
     ToastrService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    DatePipe
   ],
 })
 export class AppModule {}

@@ -10,11 +10,11 @@ const routes: Routes = [
     component:  ActivityTeamComponent
   },
   {
-    path: 'list',
+    path: 'list/:id',
     component: ActivityListComponent
   },
   {
-    path: 'user/:id',
+    path:'list/:id/user/:id1',
     component: ActivityUserComponent
   },
 

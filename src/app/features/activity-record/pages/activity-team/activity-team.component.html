@@ -1,52 +1,109 @@
-<div class="activity-team">
-    <div class="activity-team_container">
-        <div class="activity-team_header">
-            
-          
-            
-            <div class="quick-filter">
-                <div class="quick-filter-option">
-                    <label for="filterDropdown">Quick Filter:</label>
-                    <select id="filterDropdown">
-                        <option value="option1">Angular</option>
-                        <option value="option2">Java</option>
-                        <option value="option3">QA</option>
-                        <option value="option3">Design</option>
-                        <option value="option3">Mobile Dev</option>
-                    </select>
-                </div>
-               
-            </div>
-            <div class="header_btn">
-                <div class="btn_export">
-                    <button>Export</button>
-                </div>
-            </div>
+<div class="activity-list">
+  <div class="activity-list_container">
+    <div class="activity-list_header">
+      <div class="activity-list_top">
+        <div class="header_avatar">
+          <h5><fa-icon [icon]="faUser"></fa-icon>Hi, Admin!</h5>
         </div>
+      </div>
+      <div class="header_btn">
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Select Team</mat-label>
+          <mat-select [(value)]="selectedTeam" (selectionChange)="onTeamSelected($event)">
+            <mat-option value="Team Angular">Team Angular</mat-option>
+            <mat-option value="Team Mobile App">Team Mobile App</mat-option>
+            <mat-option value="Team Java">Team Java</mat-option>
+            <mat-option value="Team QA">Team QA</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <div class="date-info">
-            <div class="date-content">Date: 16th July - 20th July</div>
-        </div>
-
-        <div class="main-table">
-            <div class="table-container">
-                <div class="user-table">
-                    <table id="usersTable">
-                        <tr>
-                            <th>Name</th>
-                            <th>Working Hours</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr *ngFor="let user of formValue; let i = index">
-                            <td>{{ user.name }}</td>
-                            <td>{{ user.workinghours }}</td>
-                            <td>
-                             <button class="eye-btn" (click)="goToList()" ><i class="fa-solid fa-eye"></i></button>
-                            </td>
-                          </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <button class="export-button" (click)="exportUserData()" [disabled]="!hasData">
+          <fa-icon [icon]="faFileExport"></fa-icon>Export
+        </button>
+        
+      </div>
     </div>
+    <div class="main-title">
+     <img src="../../../../../assets/landing.png">
+    </div>
+  
+ 
+    <div class="main">
+     
+      <div class="date">
+        <mat-form-field class="date-range-picker">
+          <mat-label>Pick Date Range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              placeholder="Start date"
+              (dateChange)="startDateChanged($event)"
+            />
+            <input
+              matEndDate
+              placeholder="End date"
+              (dateChange)="endDateChanged($event)"
+            />
+          </mat-date-range-input>
+
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <button (click)="fetchTableData()" class="btn-fetch">Search</button>
+      </div>
+    </div>
+
+    <div class="main-table">
+      <div class="table-container">
+        <div class="user-table">
+          <table id="usersTable">
+            <tr>
+              <th>Name</th>
+              <th>Total Working Hours</th>
+              <th>Action</th>
+            </tr>
+            <tr *ngFor="let user of dataList">
+              <td>{{ user.firstName }} {{ user.lastName }}</td>
+              <td>{{ user.workingHour }}</td>
+              <td>
+                <button class="btn" (click)="gotoDetail(user.userId, user.firstName, user.lastName)">
+                  <fa-icon [icon]="faEye"></fa-icon>
+                </button>
+              </td>
+            </tr>
+            <tr class="date-range-error" *ngIf="showDateRangeError">
+              <td colspan="3" style="text-align: center;">
+                <strong>
+                  <fa-icon  [icon]="faLightbulb"></fa-icon> Please select your team and the date range to fetch the data.
+                </strong>
+              </td>
+            </tr>
+            <tr class="loading-row" *ngIf="isLoading && !showDateRangeError">
+              <td colspan="3">
+                <h5>
+                  <strong>
+                    <i class="fas fa-spinner fa-spin"></i><br />Fetching the Users Details. Please wait....
+                  </strong>
+                </h5>
+              </td>
+            </tr>
+            <div class="pagination">
+              <button class="btn-paginate" (click)="goToPreviousPage()" [disabled]="pageNo === 0 || isLoading || !hasData">
+                <fa-icon [icon]="faAnglesLeft"></fa-icon>Previous
+              </button>
+              <span class="page-no"><strong>Current Page:</strong> {{ pageNo + 1 }}</span>
+              <button class="btn-paginate" (click)="goToNextPage()" [disabled]="!containsData || isLoading || !hasData">
+                Next<fa-icon [icon]="faAnglesRight"></fa-icon>
+              </button>
+            </div>
+            
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

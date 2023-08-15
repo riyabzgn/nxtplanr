@@ -12,14 +12,11 @@ import { Team } from '../team';
 export class TeamListComponent implements OnInit {
   teamFormValue: any[] = [];
 
-  // teamList: Team[] = [];
-
   pageNo: number = 0;
-  pageSize: number = 10;
+  pageSize: number = 6;
   isLoading: boolean = false;
   containsData: boolean = true;
-
-  companyId: any=1;
+  companyId: number | undefined;
   name: string = 'ESewa';
   description: string = '';
 
@@ -27,33 +24,44 @@ export class TeamListComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchTeamData();
-    
   }
+
   fetchTeamData() {
-    this.teamservice.getTeams(
-      this.companyId,
-      this.name,
-      this.description,
-      this.pageNo,
-      this.pageSize
-    ).subscribe({
-      next: (response: apiResponse) => {
-        const data = response.data || []; 
-        this.teamFormValue = data;
-    
-        if (data.length < this.pageSize) {
-          this.containsData = false;
-        } else {
-          this.containsData = true;
-        }
-      },
-      error: (error: any) => {
-        console.error('Error fetching teams:', error);
-   
-      }
-    });
+    if (this.companyId) {
+      this.teamservice
+        .getAllTeams(this.companyId, this.pageNo, this.pageSize)
+        .subscribe(
+          (res: any) => {
+            this.teamFormValue = res.content;
+            this.containsData = this.teamFormValue.length === this.pageSize;
+          },
+          (error) => {
+            console.error('Error fetching teams:', error);
+          }
+        );
+    }
   }
-  
+
+  addTeamDetails() {
+    this.router.navigate(['/team/details']);
+  }
+
+  deleteTeam(id: number) {
+    if (confirm('Are you sure you want to delete this team?')) {
+      this.isLoading = true;
+      this.teamservice.deleteTeam(id).subscribe({
+        next: (response: any) => {
+          console.log('Team deleted:', response);
+          this.fetchTeamData();
+        },
+        error: (error) => {
+          console.error('Error deleting team:', error);
+          this.isLoading = false;
+        },
+      });
+    }
+  }
+
   goToPreviousPage() {
     if (this.pageNo > 0) {
       this.pageNo--;
@@ -65,40 +73,8 @@ export class TeamListComponent implements OnInit {
     if (this.containsData) {
       this.pageNo++;
       this.fetchTeamData();
+    } else {
+      this.pageNo--;
     }
   }
-
- addTeamDetails() {
-    this.router.navigate(['/details']);
-  }
-
-  gotoActivity() {
-    this.router.navigate(['']);
-  }
-
-  // deleteTeam(id: number) {
-  //   this.teamservice.removeTeam(id).subscribe(() => {
-  //     this.refreshTeam();
-  //   });
-  // }
-
-  refreshTeam() {
-    console.log('refreshTeam() called.');
-  }
-
-  updateTeam(id: number) {
-    this.router.navigate([`/update/${id}`]);
-    console.log('updateTeam() working');
-  }
-
-
 }
-interface data {
-  numberofElements: any;
-}
-interface apiResponse {
-  message: string;
-  data: Team[];
-
-}
-

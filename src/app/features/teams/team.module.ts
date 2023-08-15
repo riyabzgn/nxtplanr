@@ -5,7 +5,7 @@ import { TeamListComponent } from './pages/team-list/team-list.component';
 import { TeamViewComponent } from './pages/team-view/team-view.component';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TeamUpdateComponent } from './pages/team-update/team-update.component';
+// import { TeamUpdateComponent } from './pages/team-update/team-update.component';
 import { TeamsRoutingModule } from './teams-routing.module';
 
 
@@ -14,7 +14,7 @@ import { TeamsRoutingModule } from './teams-routing.module';
     TeamDetailsComponent,
     TeamListComponent,
     TeamViewComponent,
-    TeamUpdateComponent
+    // TeamUpdateComponent
 
   ],
   imports: [
