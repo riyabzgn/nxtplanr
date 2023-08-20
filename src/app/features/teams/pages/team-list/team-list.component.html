@@ -20,7 +20,7 @@
           
           <p class="card-desc d-flex justify-content-center p-1">{{ formVal.description }}</p>
           <div class="buttons d-flex justify-content-around mb-4">
-            <button type="button" class="btn border-warning">Update Team</button>
+            <button type="button" class="btn border-warning" (click)="updateTeam(formVal.id)">Update Team</button>
             <button type="button" class="btn border-danger" (click)="deleteTeam(formVal.id)">Delete Team</button>
           </div>
         </div>

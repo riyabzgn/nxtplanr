@@ -62,6 +62,10 @@ export class TeamListComponent implements OnInit {
     }
   }
 
+  updateTeam(id: number) {
+    this.router.navigate(['/team/details']);
+  }
+
   goToPreviousPage() {
     if (this.pageNo > 0) {
       this.pageNo--;
